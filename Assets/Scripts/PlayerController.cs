@@ -8,8 +8,12 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     private Vector2 moveDir;
     public float rotationSpeed;
+    private EnergyControl _energyControl;
     // Start is called before the first frame update
-    
+    private void Start()
+    {
+        _energyControl = GetComponent<EnergyControl>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,6 +32,10 @@ public class PlayerController : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         moveDir = new Vector2(moveX, moveY);
+        if (_energyControl.Energy <= 0)
+        {
+            moveDir = Vector2.zero;
+        }
 
         if (moveDir != Vector2.zero)
         {
