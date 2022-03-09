@@ -38,7 +38,7 @@ public class EnergyControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _energy -= Mathf.Clamp(_rb.velocity.magnitude * energyDrain + energyDecay, 0, maxEnergy);
+        _energy -= Mathf.Clamp((_rb.velocity.magnitude * energyDrain + energyDecay) * Time.deltaTime, 0, maxEnergy);
         _energyText.text = "Energy: " + Math.Round(_energy) + " eV";
     }
 }

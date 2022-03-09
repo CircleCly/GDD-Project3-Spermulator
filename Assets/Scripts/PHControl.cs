@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PHControl : MonoBehaviour
@@ -39,6 +40,7 @@ public class PHControl : MonoBehaviour
         if (_pH < minPH || _pH > maxPH)
         {
             Destroy(gameObject);
+            GameManager.Instance.LoseGame();
         }
     }
 }

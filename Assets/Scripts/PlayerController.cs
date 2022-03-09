@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         ProcessInputs();
+        if (transform.position.y >= 45)
+        {
+            GameManager.Instance.WinGame();
+        }
     }
 
     void FixedUpdate()
@@ -39,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
         if (moveDir != Vector2.zero)
         {
+            //transform.Rotate(new Vector3(0, 0, -0.5f * moveX));
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDir);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
@@ -48,6 +54,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        //rb.AddForce(new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed));
         rb.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
 
     }
