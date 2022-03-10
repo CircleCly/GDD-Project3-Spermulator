@@ -41,6 +41,14 @@ public class PHControl : MonoBehaviour
     {
         _pH -= pHDecay * Time.deltaTime;
         _pHText.text = "pH: " + Math.Round(_pH, 2);
+        if (_pH < minPH + (maxPH - minPH) * 0.2)
+        {
+            _pHText.color = Color.red;
+        } else
+        {
+            _pHText.color = Color.white;
+        }
+        
         if (_pH < minPH || _pH > maxPH)
         {
             GameManager.Instance.LoseGame();

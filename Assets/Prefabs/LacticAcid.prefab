@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f32bea5212c99458caf3faa5c396e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 10
+  time: 30
   fade: 1
 --- !u!50 &3904295285612427427
 Rigidbody2D:
@@ -150,6 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c700542c2f8ab014aa21a47cd137407e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pHAcidDecline: 0.2
+  pHAcidDecline: 0.5
   stickyness: 20
-  energyDrain: 1
+  energyDrain: 10

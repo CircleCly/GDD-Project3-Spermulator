@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _acid: {fileID: 7092453742611594973, guid: 8555c9ef89f6c7d46863792e17b56f7a, type: 3}
-  _acidSpawnDelay: 1.5
+  _acidSpawnDelay: 5
   _moveForce: 5
   _maxSpeed: 8
-  _shootForce: 500
+  _shootForce: 300
 --- !u!50 &1922788063
 Rigidbody2D:
   serializedVersion: 4
