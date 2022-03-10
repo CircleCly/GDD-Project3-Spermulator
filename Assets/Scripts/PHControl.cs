@@ -12,6 +12,9 @@ public class PHControl : MonoBehaviour
     [Tooltip("UI Text for pH")]
     private TextMeshProUGUI _pHText;
 
+    // Cached Rigidbody component.
+    private Rigidbody2D _rb;
+
     // The pH value of this current object
     private float _pH;
 
@@ -24,11 +27,15 @@ public class PHControl : MonoBehaviour
     // pH decline speed, per second
     public float pHDecay;
 
+    // pH decline speed while touching acid
+    public float pHAcidDecline;
+
     public float PH { get => _pH; set => _pH = value; }
 
     // Start is called before the first frame update
     void Start()
     {
+        _rb = GetComponent<Rigidbody2D>();
         _pH = maxPH;
     }
 
@@ -41,6 +48,14 @@ public class PHControl : MonoBehaviour
         {
             Destroy(gameObject);
             GameManager.Instance.LoseGame();
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Acid"))
+        {
+            _pH -= pHAcidDecline * Time.deltaTime;
         }
     }
 }

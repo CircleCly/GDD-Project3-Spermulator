@@ -1252,10 +1252,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1922788063, guid: 15c608d14d55b39458e540ef945c0906, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2657898383697922920, guid: 15c608d14d55b39458e540ef945c0906, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1266,7 +1262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2657898383697922920, guid: 15c608d14d55b39458e540ef945c0906, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 42.4
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 2657898383697922920, guid: 15c608d14d55b39458e540ef945c0906, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1313,6 +1309,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3080876480001786433, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3080876480001786434, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1321,6 +1321,10 @@ PrefabInstance:
       propertyPath: _pHText
       value: 
       objectReference: {fileID: 1232649020}
+    - target: {fileID: 3080876480001786436, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
+      propertyPath: pHAcidDecline
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 3080876480001786437, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
       propertyPath: _energyText
       value: 
