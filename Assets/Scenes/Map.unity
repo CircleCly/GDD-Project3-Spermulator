@@ -919,6 +919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LactoBacteria
       objectReference: {fileID: 0}
+    - target: {fileID: 8092984021232148945, guid: 15c608d14d55b39458e540ef945c0906, type: 3}
+      propertyPath: _shootForce
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15c608d14d55b39458e540ef945c0906, type: 3}
 --- !u!1 &1695719126
@@ -1448,7 +1452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3080876480001786435, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
       propertyPath: controlWithMouse
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3080876480001786436, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
       propertyPath: _pHText

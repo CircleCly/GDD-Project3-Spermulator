@@ -25,7 +25,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Move();
+        if (!controlWithMouse)
+        {
+            Move();
+        }
     }
 
     void ProcessInputs()
@@ -47,7 +50,7 @@ public class PlayerController : MonoBehaviour
             moveDir = Vector2.zero;
         }
         float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = Vector2.MoveTowards(transform.position, cursorPos, moveSpeed * Time.deltaTime);

@@ -150,6 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c700542c2f8ab014aa21a47cd137407e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pHAcidDecline: 0.05
-  stickyness: 5
-  energyDrain: 0.5
+  pHAcidDecline: 0.2
+  stickyness: 20
+  energyDrain: 1
