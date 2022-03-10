@@ -20,10 +20,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         ProcessInputs();
-        if (transform.position.y >= 45)
-        {
-            GameManager.Instance.WinGame();
-        }
     }
 
     void FixedUpdate()
@@ -57,5 +53,13 @@ public class PlayerController : MonoBehaviour
         //rb.AddForce(new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed));
         rb.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            GameManager.Instance.WinGame();
+        }
     }
 }

@@ -5,15 +5,33 @@ using UnityEngine;
 public class DestroyInXSeconds : MonoBehaviour
 {
     public float time;
+
+    public bool fade;
+
+    private SpriteRenderer _renderer;
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, time);
+        if (fade)
+        {
+            _renderer = gameObject.GetComponent<SpriteRenderer>();
+        }
+        StartCoroutine(DestroyRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator DestroyRoutine()
     {
-        
+        float destroyTimer = 0f;
+        while (destroyTimer < time)
+        {
+            if (fade)
+            {
+                Color c = _renderer.color;
+                _renderer.color = new Color(c.r, c.g, c.b, (time - destroyTimer) / time);
+            }
+            yield return null;
+            destroyTimer += Time.deltaTime;
+        }
+        Destroy(gameObject);
     }
 }

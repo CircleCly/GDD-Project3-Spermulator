@@ -27,9 +27,6 @@ public class PHControl : MonoBehaviour
     // pH decline speed, per second
     public float pHDecay;
 
-    // pH decline speed while touching acid
-    public float pHAcidDecline;
-
     public float PH { get => _pH; set => _pH = value; }
 
     // Start is called before the first frame update
@@ -46,16 +43,9 @@ public class PHControl : MonoBehaviour
         _pHText.text = "pH: " + Math.Round(_pH, 2);
         if (_pH < minPH || _pH > maxPH)
         {
-            Destroy(gameObject);
             GameManager.Instance.LoseGame();
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Acid"))
-        {
-            _pH -= pHAcidDecline * Time.deltaTime;
-        }
-    }
+   
 }
