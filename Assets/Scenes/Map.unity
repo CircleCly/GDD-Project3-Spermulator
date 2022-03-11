@@ -1381,6 +1381,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 295115076, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
+      propertyPath: wiggleMag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 295115076, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
+      propertyPath: wiggleSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3080876480001786432, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
       propertyPath: m_Constraints
       value: 4
