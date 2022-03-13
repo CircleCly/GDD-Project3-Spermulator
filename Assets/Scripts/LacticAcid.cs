@@ -42,9 +42,6 @@ public class LacticAcid : MonoBehaviour
             _playerPHCtrl.PH -= pHAcidDecline * Time.deltaTime;
             _playerRb.AddForce(-stickyness * _playerRb.velocity);
             _playerEnergy.Energy -= energyDrain * Time.deltaTime;
-        } else if (collision.gameObject.CompareTag("Boundary"))
-        {
-            Destroy(gameObject);
         }
     }
 }

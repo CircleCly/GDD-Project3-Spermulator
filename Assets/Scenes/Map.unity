@@ -1046,7 +1046,7 @@ MonoBehaviour:
   spawnTimeMin: 2
   spawnTimeMax: 3
   bacteria:
-  - {fileID: 2657898383697922922, guid: 15c608d14d55b39458e540ef945c0906, type: 3}
+  - {fileID: 5579143550202326806, guid: 3f268bd19cd58bd47a434c0d9f6a1007, type: 3}
   spawnCount: 50
 --- !u!1 &1992934656 stripped
 GameObject:
