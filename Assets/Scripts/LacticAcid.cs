@@ -41,7 +41,7 @@ public class LacticAcid : MonoBehaviour
         {
             _playerPHCtrl.PH -= pHAcidDecline * Time.deltaTime;
             _playerRb.AddForce(-stickyness * _playerRb.velocity);
-            _playerEnergy.Energy -= energyDrain * Time.deltaTime;
+            _playerEnergy.ModifyEnergy(-energyDrain * Time.deltaTime);
         }
     }
 }

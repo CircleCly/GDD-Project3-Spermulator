@@ -23,10 +23,15 @@ public class EnergyControl : MonoBehaviour
     // Energy decay speed w.r.t to velocity
     public float energyDrain;
 
+    // Energy decay speed w.r.t to velocity
+    public float energyDrainRotation;
+
     // Energy decay speed when not moving
     public float energyDecay;
 
-    public float Energy { get => _energy; set => _energy = value; }
+    
+
+    public float Energy { get => _energy; }
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +43,12 @@ public class EnergyControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _energy -= Mathf.Clamp((_rb.velocity.magnitude * energyDrain + energyDecay) * Time.deltaTime, 0, maxEnergy);
+        ModifyEnergy(-(_rb.velocity.magnitude * energyDrain + energyDecay) * Time.deltaTime);
         _energyText.text = "Energy: " + Math.Round(_energy) + " eV";
+    }
+
+    public void ModifyEnergy(float amount)
+    {
+        _energy = Mathf.Clamp(_energy + amount, 0, maxEnergy);
     }
 }

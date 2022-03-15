@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Acid
   - Boundary
+  - Egg
   layers:
   - Default
   - TransparentFX

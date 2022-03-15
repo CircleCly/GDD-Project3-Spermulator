@@ -160,8 +160,8 @@ MonoBehaviour:
   targetDist: 0.2
   smoothSpeed: 0.02
   trailSpeed: 350
-  wiggleSpeed: 0
-  wiggleMag: 0
+  wiggleSpeed: 20
+  wiggleMag: 10
   wiggleDir: {fileID: 878550153}
 --- !u!1 &878550152
 GameObject:
@@ -333,7 +333,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3080876480001786435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,9 +346,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc7574931e34d74ab00a25421792f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 3080876480001786432}
-  moveSpeed: 3
+  moveSpeed: 2.5
   rotationSpeed: 400
+  rb: {fileID: 3080876480001786432}
+  controlWithMouse: 1
 --- !u!70 &3080876480001786439
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -394,6 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _energyText: {fileID: 0}
-  maxEnergy: 1000
-  energyDrain: 0.6
-  energyDecay: 1.8
+  maxEnergy: 450
+  energyDrain: 1
+  energyDrainRotation: 0.01
+  energyDecay: 2.5

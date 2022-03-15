@@ -25,9 +25,5 @@ public class MouseControl : MonoBehaviour
 
         Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = Vector2.MoveTowards(transform.position, cursorPos, moveSpeed * Time.deltaTime);
-        if (transform.position.y >= 45)
-        {
-            GameManager.Instance.WinGame();
-        }
     }
 }

@@ -8,18 +8,15 @@ public class BacteriaSpawner : MonoBehaviour
 
     public Vector2 lowerLeft;
 
-    public float spawnTimeMin;
-
-    public float spawnTimeMax;
-
     public GameObject[] bacteria;
 
-    public int spawnCount;
+    public int initialCount;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(SpawnRoutine());
+    void Start() {
+        Bacteria.numBacteria = initialCount;
+        RandomSpawnBacteria(initialCount);
+        
     }
 
     // Update is called once per frame
@@ -28,11 +25,10 @@ public class BacteriaSpawner : MonoBehaviour
         
     }
 
-    IEnumerator SpawnRoutine()
+    private void RandomSpawnBacteria(int time = 1)
     {
-        for (int i = 1; i <= spawnCount; i++)
+        for (int i = 1; i <= time; i++)
         {
-            yield return new WaitForSeconds(Random.Range(spawnTimeMin, spawnTimeMax));
             Vector2 pos = new Vector2(Random.Range(lowerLeft.x, upperRight.x), Random.Range(lowerLeft.y, upperRight.y));
             Instantiate(bacteria[Random.Range(0, bacteria.Length)], pos, transform.rotation);
         }
