@@ -11,6 +11,10 @@ public class EnergyControl : MonoBehaviour
     [Tooltip("UI Text for Energy")]
     private TextMeshProUGUI _energyText;
 
+    [SerializeField]
+    [Tooltip("Slider for Energy")]
+    private Image _energySlider;
+
     // The energy value of this current object
     private float _energy;
 
@@ -44,7 +48,8 @@ public class EnergyControl : MonoBehaviour
     void Update()
     {
         ModifyEnergy(-(_rb.velocity.magnitude * energyDrain + energyDecay) * Time.deltaTime);
-        _energyText.text = "Energy: " + Math.Round(_energy) + " eV";
+        _energyText.text = Math.Round(_energy) + " eV";
+        _energySlider.rectTransform.localScale = new Vector3(_energy / maxEnergy, _energySlider.rectTransform.localScale.y, 0);
     }
 
     public void ModifyEnergy(float amount)

@@ -12,6 +12,14 @@ public class PHControl : MonoBehaviour
     [Tooltip("UI Text for pH")]
     private TextMeshProUGUI _pHText;
 
+    [SerializeField]
+    [Tooltip("Marker for pH")]
+    private Image _pHMarker;
+
+    [SerializeField]
+    [Tooltip("Marker sliding range")]
+    private Vector2 _markerRange;
+
     // Cached Rigidbody component.
     private Rigidbody2D _rb;
 
@@ -40,7 +48,11 @@ public class PHControl : MonoBehaviour
     void Update()
     {
         _pH -= pHDecay * Time.deltaTime;
-        _pHText.text = "pH: " + Math.Round(_pH, 2);
+        _pHText.text = "" + Math.Round(_pH, 2);
+        float pHProportion = (_pH - minPH) / (maxPH - minPH);
+        float newX = pHProportion * (_markerRange.y - _markerRange.x) + _markerRange.x;
+        _pHMarker.rectTransform.anchoredPosition = new Vector2(newX, _pHMarker.rectTransform.anchoredPosition.y);
+
         if (_pH < minPH + (maxPH - minPH) * 0.2)
         {
             _pHText.color = Color.red;
