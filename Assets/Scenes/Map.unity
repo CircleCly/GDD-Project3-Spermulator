@@ -4369,6 +4369,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1856030809, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.54
+      objectReference: {fileID: 0}
     - target: {fileID: 3080876480001786434, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
       propertyPath: m_Name
       value: Player
