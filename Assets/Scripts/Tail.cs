@@ -35,7 +35,7 @@ public class Tail : MonoBehaviour
         segmentPoses[0] = targetDir.position;
         for (int i = 1; i < segmentPoses.Length; i++)
         {
-            segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], segmentPoses[i-1] + targetDir.right * targetDist, ref segmentV[i], smoothSpeed + i / trailSpeed);
+            segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], segmentPoses[i - 1] + targetDir.right * targetDist, ref segmentV[i], smoothSpeed + i / trailSpeed);
         }
         lineRend.SetPositions(segmentPoses);
     }

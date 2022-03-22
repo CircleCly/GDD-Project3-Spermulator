@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class EggSpawner : MonoBehaviour
 {
-    public Vector2 upperRight;
+    public Transform left;
 
-    public Vector2 lowerLeft;
+    public Transform right;
 
     public GameObject egg;
 
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 pos = new Vector2(Random.Range(lowerLeft.x, upperRight.x), Random.Range(lowerLeft.y, upperRight.y));
-        Instantiate(egg, pos, transform.rotation);
+        if (Random.Range(0f, 1f) < 0.5f)
+        {
+            Instantiate(egg, left.position, left.rotation);
+        } else
+        {
+            Instantiate(egg, right.position, left.rotation);
+        }
+        
     }
 
     // Update is called once per frame
