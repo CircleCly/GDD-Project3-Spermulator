@@ -7,6 +7,7 @@ TagManager:
   - Acid
   - Boundary
   - Egg
+  - Competitor
   layers:
   - Default
   - TransparentFX

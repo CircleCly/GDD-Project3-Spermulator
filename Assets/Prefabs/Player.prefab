@@ -270,7 +270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856030808}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.06, y: 0.564, z: 0}
+  m_LocalPosition: {x: -0.01, y: 0.5554, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 878550153}
@@ -416,7 +416,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.76, y: 3.47}
+  m_Size: {x: 1.85, y: 3.63}
   m_Direction: 0
 --- !u!114 &3080876480001786436
 MonoBehaviour:
@@ -435,7 +435,7 @@ MonoBehaviour:
   _markerRange: {x: -880, y: -174}
   minPH: 6
   maxPH: 8
-  pHDecay: 0.02
+  pHDecay: 0.015
 --- !u!114 &3080876480001786437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _energyText: {fileID: 0}
   _energySlider: {fileID: 0}
-  maxEnergy: 450
+  maxEnergy: 650
   energyDrain: 1
   energyDrainRotation: 0.01
   energyDecay: 2.5
