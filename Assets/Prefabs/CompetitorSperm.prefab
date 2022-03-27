@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4770773797664679666}
   - component: {fileID: 4770773797664679667}
   - component: {fileID: 4770773797664679668}
+  - component: {fileID: 4323921829112440087}
   m_Layer: 0
   m_Name: CompetitorSperm
   m_TagString: Untagged
@@ -121,8 +122,23 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.76, y: 3.47}
+  m_Size: {x: 1.85, y: 3.63}
   m_Direction: 0
+--- !u!114 &4323921829112440087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770773797664679665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e110e881bb79e44962ed720fdab6ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstWaypoint: {fileID: 0}
+  moveSpeed: 2.4
+  rotationSpeed: 0.7
 --- !u!1 &7562750676212083947
 GameObject:
   m_ObjectHideFlags: 0
