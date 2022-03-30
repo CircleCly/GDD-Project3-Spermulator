@@ -24,6 +24,10 @@ public class ImmuneCell : MonoBehaviour
     {
         while (true)
         {
+            if (_detector.spermDetected)
+            {
+
+            }
             yield return new WaitForSeconds(shootInterval);
         }
     }
