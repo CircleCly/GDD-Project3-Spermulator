@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     #region References
     public Rigidbody2D rb;
     private EnergyControl _energyControl;
+    private PHControl _pHControl;
     #endregion
 
     public bool controlWithMouse;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _energyControl = GetComponent<EnergyControl>();
+        _pHControl = GetComponent<PHControl>();
     }
 
     // Update is called once per frame
@@ -50,11 +52,12 @@ public class PlayerController : MonoBehaviour
         moveDir = mousePoint - transform.position;
         float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         if (_energyControl.Energy > 0)
         {
-            transform.position = Vector2.MoveTowards(transform.position, cursorPos, moveSpeed * Time.deltaTime);
+            float speedPercent = Mathf.Clamp01(moveDir.magnitude / 3f);
+            transform.position = Vector2.MoveTowards(transform.position, mousePoint, speedPercent * moveSpeed * Time.deltaTime);
+            _energyControl.ModifyEnergy(-speedPercent * _energyControl.energyDrain);
         }
     }
 
@@ -76,5 +79,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Boundary"))
+        {
+            _energyControl.ModifyEnergy(-_energyControl.crashEnergyDecrease);
+            _pHControl.PH -= _pHControl.crashPHDecrease;
+        } else if (collision.gameObject.CompareTag("Bottom"))
+        {
+            GameManager.Instance.AltEnding();
+        }
+    }
+
 }

@@ -8,6 +8,7 @@ TagManager:
   - Boundary
   - Egg
   - Competitor
+  - Bottom
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
+  - Spawn
   - 
   - 
   - 

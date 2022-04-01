@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LacticAcid : MonoBehaviour
+public class PHMutator : MonoBehaviour
 {
     // pH decline speed while touching acid
     public float pHAcidDecline;
@@ -39,9 +39,18 @@ public class LacticAcid : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            _playerPHCtrl.PH -= pHAcidDecline * Time.deltaTime;
-            _playerRb.AddForce(-stickyness * _playerRb.velocity);
-            _playerEnergy.ModifyEnergy(-energyDrain * Time.deltaTime);
+            if (_player == null)
+            {
+                _player = gameObject;
+                _playerPHCtrl = _player.GetComponent<PHControl>();
+                _playerRb = _player.GetComponent<Rigidbody2D>();
+                _playerEnergy = _player.GetComponent<EnergyControl>();
+            } else
+            {
+                _playerPHCtrl.PH -= pHAcidDecline * Time.deltaTime;
+                _playerRb.AddForce(-stickyness * _playerRb.velocity);
+                _playerEnergy.ModifyEnergy(-energyDrain * Time.deltaTime);
+            }
         }
     }
 }

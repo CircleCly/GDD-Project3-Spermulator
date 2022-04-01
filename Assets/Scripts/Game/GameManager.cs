@@ -35,5 +35,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("YouWin");
     }
+
+    public void AltEnding()
+    {
+        SceneManager.LoadScene("AltEnding");
+    }
     #endregion
 }

@@ -37,7 +37,7 @@ public class PHGUIControl : MonoBehaviour
         float pHProportion = (pH - minPH) / (maxPH - minPH);
         float newX = pHProportion * (_markerRange.y - _markerRange.x) + _markerRange.x;
         _pHMarker.rectTransform.anchoredPosition = new Vector2(newX, _pHMarker.rectTransform.anchoredPosition.y);
-        if (pH < minPH + (maxPH - minPH) * 0.2)
+        if (pH < minPH + (maxPH - minPH) * 0.2 || pH > minPH + (maxPH - minPH) * 0.8)
         {
             _pHText.color = Color.red;
         }

@@ -33,6 +33,9 @@ public class EnergyControl : MonoBehaviour
     // Energy decay speed when not moving
     public float energyDecay;
 
+    // Energy decrement when crashing the wall.
+    public float crashEnergyDecrease;
+
     
 
     public float Energy { get => _energy; }
@@ -47,7 +50,7 @@ public class EnergyControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ModifyEnergy(-(_rb.velocity.magnitude * energyDrain + energyDecay) * Time.deltaTime);
+        ModifyEnergy(-energyDecay * Time.deltaTime);
         _energyText.text = Math.Round(_energy) + " eV";
         _energySlider.rectTransform.localScale = new Vector3(_energy / maxEnergy, _energySlider.rectTransform.localScale.y, 0);
     }

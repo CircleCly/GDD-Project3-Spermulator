@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Sprites/UI/Scenes/Map.unity
+    path: Assets/Scenes/Map.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Sprites/UI/Scenes/YouLose.unity
+    path: Assets/Scenes/YouLose.unity
     guid: b6d9101fb6c5b5e419a103c86879f212
   - enabled: 1
-    path: Assets/Sprites/UI/Scenes/YouWin.unity
+    path: Assets/Scenes/YouWin.unity
     guid: 23b0642ce76cc5d43bcd63e02f4b8e1d
+  - enabled: 1
+    path: Assets/Scenes/AltEnding.unity
+    guid: 8824085ced3e580499f24cd99f1005ef
   m_configObjects: {}

@@ -14,18 +14,24 @@ public class PHControl : MonoBehaviour
     // Minimum for the entity to survive
     public float minPH;
 
+    // Start value for this entity;
+    public float startPH;
+
     // Maximum for the entity to survive
     public float maxPH;
 
     // pH decline speed, per second
     public float pHDecay;
 
+    // pH decline when crashing
+    public float crashPHDecrease;
+
     public float PH { get => _pH; set => _pH = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-        _pH = maxPH;
+        _pH = startPH;
     }
 
     // Update is called once per frame

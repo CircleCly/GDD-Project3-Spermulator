@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pHAcidDecline: 0.5
-  stickyness: 20
+  stickyness: 0
   energyDrain: 10
 --- !u!1 &5579143550885657714
 GameObject:
