@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pHAcidDecline: 0.5
   stickyness: 0
-  energyDrain: 10
+  energyDrain: 0.5
 --- !u!1 &5579143550885657714
 GameObject:
   m_ObjectHideFlags: 0

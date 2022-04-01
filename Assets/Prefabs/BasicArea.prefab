@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pHAcidDecline: -0.5
   stickyness: 0
-  energyDrain: 2
+  energyDrain: 0.5
 --- !u!50 &8553605890909473425
 Rigidbody2D:
   serializedVersion: 4
