@@ -2643,7 +2643,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -9
   m_Sprite: {fileID: 21300000, guid: 92605abe250167c4584905d1c2770be6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2667,7 +2667,7 @@ Transform:
   m_LocalScale: {x: 7.448862, y: 5.1957564, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &216018069 stripped
 Transform:
@@ -3583,7 +3583,6 @@ GameObject:
   - component: {fileID: 462049506}
   - component: {fileID: 462049505}
   - component: {fileID: 462049507}
-  - component: {fileID: 462049508}
   m_Layer: 0
   m_Name: UterusDraft
   m_TagString: Boundary
@@ -4334,9 +4333,9 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 0.6
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.9
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -4386,7 +4385,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 9
+  m_PointLightOuterRadius: 6
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -4932,7 +4931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &581456776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5023,7 +5022,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &582641019 stripped
 Transform:
@@ -10303,6 +10302,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 295115077, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 295115077, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 295115077, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d7ab787cf40341c418f5318c181cea57, type: 2}
+    - target: {fileID: 295115077, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d7ab787cf40341c418f5318c181cea57, type: 2}
     - target: {fileID: 3080876480001786433, guid: 0ad0040e8de21ea47bf445e632fe3b5b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -10526,6 +10541,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5393013762982409531, guid: b4007a9d6e817d84b8d656c5cfc33152, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -87.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393013762982409531, guid: b4007a9d6e817d84b8d656c5cfc33152, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 160.55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4007a9d6e817d84b8d656c5cfc33152, type: 3}
 --- !u!1001 &6534810340766330619
@@ -10661,28 +10684,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7562750676325940726, guid: 004015793a64161479f124acfa07ed3b, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0.10980393
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7562750676325940726, guid: 004015793a64161479f124acfa07ed3b, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0.8196079
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7562750676325940726, guid: 004015793a64161479f124acfa07ed3b, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.r
-      value: 0.15686275
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d7ab787cf40341c418f5318c181cea57, type: 2}
     - target: {fileID: 7562750676325940726, guid: 004015793a64161479f124acfa07ed3b, type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.b
-      value: 0.10588236
-      objectReference: {fileID: 0}
-    - target: {fileID: 7562750676325940726, guid: 004015793a64161479f124acfa07ed3b, type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.g
-      value: 0.8352942
-      objectReference: {fileID: 0}
-    - target: {fileID: 7562750676325940726, guid: 004015793a64161479f124acfa07ed3b, type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.r
-      value: 0.13725491
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d7ab787cf40341c418f5318c181cea57, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 004015793a64161479f124acfa07ed3b, type: 3}
