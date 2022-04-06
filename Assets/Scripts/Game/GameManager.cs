@@ -20,6 +20,14 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "Map" && GameObject.FindWithTag("Player") == null)
+        {
+            LoseGame();
+        }
+    }
     #endregion
 
     #region Scene_transitions

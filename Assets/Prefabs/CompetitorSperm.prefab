@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 4770773797664679667}
   - component: {fileID: 4770773797664679668}
   - component: {fileID: 4323921829112440087}
+  - component: {fileID: 1327311277}
+  - component: {fileID: 1327311278}
   m_Layer: 0
   m_Name: CompetitorSperm
-  m_TagString: Untagged
+  m_TagString: Competitor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,8 +139,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstWaypoint: {fileID: 0}
-  moveSpeed: 2.4
+  moveSpeed: 2.8
   rotationSpeed: 0.7
+--- !u!114 &1327311277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770773797664679665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617a6603178e99145bab34d4dca4b620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minPH: 6
+  startPH: 7
+  maxPH: 8
+  pHDecay: 0.01
+  crashPHDecrease: 0.05
+--- !u!114 &1327311278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770773797664679665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776ed8407a39fef47876cd13e1bb0469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxEnergy: 1200
+  energyDrain: 0.005
+  energyDrainRotation: 0.01
+  energyDecay: 2
+  crashEnergyDecrease: 25
 --- !u!1 &7562750676212083947
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +279,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Positions:
   - {x: 10, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}

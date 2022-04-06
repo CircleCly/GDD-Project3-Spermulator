@@ -51,6 +51,11 @@ public class PHMutator : MonoBehaviour
                 _playerRb.AddForce(-stickyness * _playerRb.velocity);
                 _playerEnergy.ModifyEnergy(-energyDrain * Time.deltaTime);
             }
+        } else if (collision.gameObject.CompareTag("Competitor")) {
+            PHControl phControl = collision.gameObject.GetComponent<PHControl>();
+            EnergyControl energyControl = collision.gameObject.GetComponent<EnergyControl>();
+            phControl.PH -= pHAcidDecline * Time.deltaTime;
+            energyControl.ModifyEnergy(-pHAcidDecline * Time.deltaTime);
         }
     }
 }

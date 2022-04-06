@@ -7,19 +7,11 @@ using UnityEngine.UI;
 
 public class EnergyControl : MonoBehaviour
 {
-    [SerializeField]
-    [Tooltip("UI Text for Energy")]
-    private TextMeshProUGUI _energyText;
 
-    [SerializeField]
-    [Tooltip("Slider for Energy")]
-    private Image _energySlider;
 
     // The energy value of this current object
     private float _energy;
 
-    // Cached player rigidbody
-    private Rigidbody2D _rb;
 
     // Max energy of this entity
     public float maxEnergy;
@@ -44,15 +36,12 @@ public class EnergyControl : MonoBehaviour
     void Start()
     {
         _energy = maxEnergy;
-        _rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         ModifyEnergy(-energyDecay * Time.deltaTime);
-        _energyText.text = Math.Round(_energy) + " eV";
-        _energySlider.rectTransform.localScale = new Vector3(_energy / maxEnergy, _energySlider.rectTransform.localScale.y, 0);
     }
 
     public void ModifyEnergy(float amount)
