@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     private Vector2 moveDir;
     public float rotationSpeed;
+    public float distTravelled;
+    public float time;
 
     #region References
     public Rigidbody2D rb;
@@ -28,9 +30,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float initRotation = transform.rotation.eulerAngles.z;
+        Vector2 initPosition = transform.position;
         ProcessInputs();
         float finalRotation = transform.rotation.eulerAngles.z;
+        Vector2 finalPosition = transform.position;
         _energyControl.ModifyEnergy(-_energyControl.energyDrainRotation * Mathf.Abs(finalRotation - initRotation));
+        distTravelled += Vector2.Distance(initPosition, finalPosition);
+        time += Time.deltaTime;
     }
 
     void ProcessInputs()
