@@ -9,6 +9,7 @@ TagManager:
   - Egg
   - Competitor
   - Bottom
+  - Base
   layers:
   - Default
   - TransparentFX

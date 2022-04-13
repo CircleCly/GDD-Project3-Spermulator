@@ -2808,6 +2808,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4753034619316331850, guid: c27acadc0dd75414db9dc0d383c624f9, type: 3}
   m_PrefabInstance: {fileID: 648280761}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &218280676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 218280677}
+  - component: {fileID: 218280679}
+  - component: {fileID: 218280678}
+  - component: {fileID: 218280680}
+  m_Layer: 0
+  m_Name: Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &218280677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218280676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1327311281}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &218280678
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218280676}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 10
+--- !u!50 &218280679
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218280676}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &218280680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218280676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896c2d6ddb0b53f40a843aed2cf39635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acidDetected: 0
+  acidPosition: {x: 0, y: 0, z: 0}
+  baseDetected: 0
+  basePosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &253924783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10876,6 +10962,10 @@ PrefabInstance:
       propertyPath: firstWaypoint
       value: 
       objectReference: {fileID: 369075004}
+    - target: {fileID: 4323921829112440087, guid: 004015793a64161479f124acfa07ed3b, type: 3}
+      propertyPath: evasionImportance
+      value: 0.95
+      objectReference: {fileID: 0}
     - target: {fileID: 4770773797664679665, guid: 004015793a64161479f124acfa07ed3b, type: 3}
       propertyPath: m_Name
       value: CompetitorSperm
