@@ -24,7 +24,7 @@ public class DistTimeGUIControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _distText.text = Math.Round(player.distTravelled) + " mm travelled";
+        _distText.text = Math.Round(player.distTravelled) + " mm traveled";
         _timeText.text = Math.Round(player.time) + " seconds elapsed";
     }
 }
