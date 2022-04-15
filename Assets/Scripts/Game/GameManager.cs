@@ -41,6 +41,25 @@ public class GameManager : MonoBehaviour
     }
     public void WinGame()
     {
+        PlayerController ctrl = GameObject.Find("Player").GetComponent<PlayerController>();
+        PlayerPrefs.SetFloat("dist", ctrl.distTravelled);
+        PlayerPrefs.SetFloat("time", ctrl.time);
+        if (!PlayerPrefs.HasKey("minDist"))
+        {
+            PlayerPrefs.SetFloat("minDist", ctrl.distTravelled);
+            PlayerPrefs.SetFloat("minTime", ctrl.time);
+        }
+        else
+        {
+            if (PlayerPrefs.GetFloat("dist") < PlayerPrefs.GetFloat("minDist"))
+            {
+                PlayerPrefs.SetFloat("minDist", ctrl.distTravelled);
+            }
+            else if (PlayerPrefs.GetFloat("time") < PlayerPrefs.GetFloat("minTime"))
+            {
+                PlayerPrefs.SetFloat("minTime", ctrl.time);
+            }
+        }
         SceneManager.LoadScene("YouWin");
     }
 
@@ -49,4 +68,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("AltEnding");
     }
     #endregion
+
+    public void ResetHighscore()
+    {
+        PlayerPrefs.DeleteKey("minTime");
+        PlayerPrefs.DeleteKey("minDist");
+    }
 }

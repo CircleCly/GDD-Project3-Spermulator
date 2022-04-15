@@ -14,7 +14,7 @@ public class CompetitorSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Acid"))
         {
-            Debug.Log(acidPosition);
+            
             acidDetected = true;
             acidPosition = collision.gameObject.transform.position;
         }
