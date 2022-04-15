@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
         if (!PlayerPrefs.HasKey("minDist"))
         {
             PlayerPrefs.SetFloat("minDist", ctrl.distTravelled);
+        }
+        if (!PlayerPrefs.HasKey("minTime"))
+        {
             PlayerPrefs.SetFloat("minTime", ctrl.time);
         }
         else

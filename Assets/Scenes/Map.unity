@@ -2644,8 +2644,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -9
-  m_Sprite: {fileID: 21300000, guid: 92605abe250167c4584905d1c2770be6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ffe69b80f8bd9bd4b9f4e21aec576adf, type: 3}
+  m_Color: {r: 0.53333336, g: 0.53333336, b: 0.53333336, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2663,8 +2663,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206495261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.1014, y: 45.7822, z: 0}
-  m_LocalScale: {x: 7.448862, y: 5.1957564, z: 1}
+  m_LocalPosition: {x: 3.8763, y: 35.3815, z: 0}
+  m_LocalScale: {x: 9.845724, y: 9.949447, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
@@ -2703,7 +2703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: -111}
+  m_AnchoredPosition: {x: -16, y: -111}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &211443977
@@ -3411,6 +3411,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dc3fe8de4ad8214ba8bcd5fbbb32b5e, type: 3}
+--- !u!1 &352276157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5393013764335501601, guid: b4007a9d6e817d84b8d656c5cfc33152, type: 3}
+  m_PrefabInstance: {fileID: 5393013763061524108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &356630967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5427,8 +5432,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641743502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4325, y: -63.2312, z: 0}
-  m_LocalScale: {x: 38.68037, y: 3.5687718, z: 1}
+  m_LocalPosition: {x: -1.2756, y: -55, z: 0}
+  m_LocalScale: {x: 45.245842, y: 9.076985, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -9162,7 +9167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: -40}
+  m_AnchoredPosition: {x: -16, y: -40}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1647502129
@@ -10917,6 +10922,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5393013762982409524, guid: b4007a9d6e817d84b8d656c5cfc33152, type: 3}
+      propertyPath: nextWaypoints.Array.data[0].waypoint
+      value: 
+      objectReference: {fileID: 352276157}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4007a9d6e817d84b8d656c5cfc33152, type: 3}
 --- !u!1001 &6534810340766330619
@@ -10991,9 +11000,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1327311277, guid: 004015793a64161479f124acfa07ed3b, type: 3}
+      propertyPath: maxPH
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327311277, guid: 004015793a64161479f124acfa07ed3b, type: 3}
+      propertyPath: minPH
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327311277, guid: 004015793a64161479f124acfa07ed3b, type: 3}
+      propertyPath: pHDecay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327311277, guid: 004015793a64161479f124acfa07ed3b, type: 3}
+      propertyPath: startPH
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327311277, guid: 004015793a64161479f124acfa07ed3b, type: 3}
+      propertyPath: crashPHDecrease
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327311278, guid: 004015793a64161479f124acfa07ed3b, type: 3}
+      propertyPath: maxEnergy
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 4323921829112440087, guid: 004015793a64161479f124acfa07ed3b, type: 3}
       propertyPath: moveSpeed
-      value: 4.2
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: 4323921829112440087, guid: 004015793a64161479f124acfa07ed3b, type: 3}
       propertyPath: firstWaypoint
