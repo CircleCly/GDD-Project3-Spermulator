@@ -35,6 +35,12 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Map");
     }
+
+    public void StartTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
     public void LoseGame()
     {
         SceneManager.LoadScene("YouLose");

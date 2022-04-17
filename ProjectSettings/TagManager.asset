@@ -10,6 +10,8 @@ TagManager:
   - Competitor
   - Bottom
   - Base
+  - ShowPH
+  - ShowEnergy
   layers:
   - Default
   - TransparentFX
