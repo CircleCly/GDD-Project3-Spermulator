@@ -10,11 +10,11 @@ public class CompetitorSensor : MonoBehaviour
     public bool baseDetected = false;
     public Vector3 basePosition;
 
-    private void OnTriggerStay2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Acid"))
         {
-            
             acidDetected = true;
             acidPosition = collision.gameObject.transform.position;
         }
@@ -23,7 +23,21 @@ public class CompetitorSensor : MonoBehaviour
             baseDetected = true;
             basePosition = collision.gameObject.transform.position;
         }
-        
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Acid"))
+        {
+
+            acidDetected = true;
+            acidPosition = collision.gameObject.transform.position;
+        }
+        else if (collision.gameObject.CompareTag("Base"))
+        {
+            baseDetected = true;
+            basePosition = collision.gameObject.transform.position;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

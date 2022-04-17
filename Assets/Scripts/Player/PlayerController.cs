@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour
 
     void ProcessInputs()
     {
-        
         if (controlWithMouse)
         {
             MouseControl();

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c700542c2f8ab014aa21a47cd137407e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pHAcidDecline: -0.5
+  pHAcidDecline: -0.25
   stickyness: 0
   energyDrain: 0.5
 --- !u!50 &8553605890909473425
@@ -151,5 +151,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f32bea5212c99458caf3faa5c396e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 15
+  time: 3
   fade: 1

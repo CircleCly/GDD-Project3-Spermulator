@@ -222,5 +222,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _detector: {fileID: 2698035373044057483}
   _immuneFluid: {fileID: 1994585640898038210, guid: 5d886db91722ee2478eb471a3293f245, type: 3}
-  shootIntervalMin: 2
-  shootIntervalMax: 3
+  shootIntervalMin: 3
+  shootIntervalMax: 4

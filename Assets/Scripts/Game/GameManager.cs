@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void StartTutorial()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("TutorialLevel");
     }
 
     public void LoseGame()
@@ -60,11 +60,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (PlayerPrefs.GetFloat("dist") < PlayerPrefs.GetFloat("minDist"))
+            if (ctrl.distTravelled < PlayerPrefs.GetFloat("minDist"))
             {
                 PlayerPrefs.SetFloat("minDist", ctrl.distTravelled);
             }
-            else if (PlayerPrefs.GetFloat("time") < PlayerPrefs.GetFloat("minTime"))
+            else if (ctrl.time < PlayerPrefs.GetFloat("minTime"))
             {
                 PlayerPrefs.SetFloat("minTime", ctrl.time);
             }

@@ -28,7 +28,7 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _playerPHControl.PH = Mathf.Clamp(_playerPHControl.PH, _playerPHControl.minPH + 0.01f, _playerPHControl.maxPH + 0.01f);
+        _playerPHControl.PH = Mathf.Clamp(_playerPHControl.PH, _playerPHControl.minPH + 0.05f, _playerPHControl.maxPH - 0.05f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,10 +44,6 @@ public class TutorialManager : MonoBehaviour
             _playerEnergyControl.energyDrain = 0.005f; 
             _playerEnergyControl.energyDrainRotation = 0.01f;
             _playerEnergyControl.energyDecay = 2f;
-        }
-        else if (collision.gameObject.CompareTag("ShowTimeDist"))
-        {
-            timeDistUI.SetActive(true);
         }
     }
 }

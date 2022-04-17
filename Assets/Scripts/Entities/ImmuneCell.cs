@@ -36,7 +36,7 @@ public class ImmuneCell : MonoBehaviour
             {
                 Vector3 shootDir = (_detector.spermPosition - transform.position).normalized;
                 GameObject fl = Instantiate(_immuneFluid, transform.position + 2.2f * shootDir, transform.rotation);
-                fl.GetComponent<Rigidbody2D>().AddForce(500 * shootDir);
+                fl.GetComponent<Rigidbody2D>().AddForce(800 * shootDir);
             }
             yield return new WaitForSeconds(Random.Range(shootIntervalMin, shootIntervalMax));
         }
