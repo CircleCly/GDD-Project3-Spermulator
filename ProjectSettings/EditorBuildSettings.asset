@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TutorialLevel.unity
     guid: 7c7cef3d4606fde4b9f5b8109a9a424c
+  - enabled: 1
+    path: Assets/Scenes/CustomizeSpermScene.unity
+    guid: 58216ce9b55f2b24b93179d3b103a2f1
   m_configObjects: {}
