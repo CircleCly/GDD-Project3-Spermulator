@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Map");
     }
 
+    public void StartCustomizeSperm()
+    {
+        SceneManager.LoadScene("CustomizeSpermScene");
+    }
+
     public void StartTutorial()
     {
         SceneManager.LoadScene("TutorialLevel");
