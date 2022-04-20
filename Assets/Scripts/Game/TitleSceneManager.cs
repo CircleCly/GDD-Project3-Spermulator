@@ -5,20 +5,30 @@ using UnityEngine.UI;
 
 public class TitleSceneManager : MonoBehaviour
 {
-    public GameObject popup;
+    public GameObject singlePlayer, multiplayer;
+    public GameObject mpPopup;
+    public GameObject tutorialPopup;
+    public GameObject enterCodePopup;
 
-    public void ShowPopup()
+
+    public void ShowPlayerModes()
     {
-        popup.SetActive(true);
+        singlePlayer.SetActive(true);
+        multiplayer.SetActive(true);
     }
 
-    public void StartGame()
+    public void ShowTutorialPopup()
     {
-        GameManager.Instance.StartGame();
+        tutorialPopup.SetActive(true);
     }
 
-    public void StartTutorial()
+    public void ShowMultiplayerPopup()
     {
-        GameManager.Instance.StartTutorial();
+        mpPopup.SetActive(true);
+    }
+
+    public void ShowEnterCodePopup()
+    {
+        enterCodePopup.SetActive(true);
     }
 }
