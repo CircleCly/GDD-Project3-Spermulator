@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CustomizeSpermScene.unity
     guid: 58216ce9b55f2b24b93179d3b103a2f1
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: e37137f495b31104eb3b918aa4829dc4
   m_configObjects: {}

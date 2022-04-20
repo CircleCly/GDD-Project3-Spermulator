@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class TitleSceneManager : MonoBehaviour
 {
     public GameObject singlePlayer, multiplayer;
-    public GameObject popup;
+    public GameObject mpPopup;
+    public GameObject tutorialPopup;
+    public GameObject enterCodePopup;
 
 
     public void ShowPlayerModes()
@@ -15,18 +17,18 @@ public class TitleSceneManager : MonoBehaviour
         multiplayer.SetActive(true);
     }
 
-    public void ShowPopup()
+    public void ShowTutorialPopup()
     {
-        popup.SetActive(true);
+        tutorialPopup.SetActive(true);
     }
 
-    public void StartGame()
+    public void ShowMultiplayerPopup()
     {
-        GameManager.Instance.StartGame();
+        mpPopup.SetActive(true);
     }
 
-    public void StartTutorial()
+    public void ShowEnterCodePopup()
     {
-        GameManager.Instance.StartTutorial();
+        enterCodePopup.SetActive(true);
     }
 }

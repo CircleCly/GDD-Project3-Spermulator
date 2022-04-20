@@ -30,24 +30,43 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    void clearEventSystem()
+    {
+        GameObject es = GameObject.Find("EventSystem");
+        if (es != null)
+        {
+            Destroy(es);
+        }
+    }
+
     #region Scene_transitions
     public void StartGame()
     {
+        clearEventSystem();
         SceneManager.LoadScene("Map");
     }
 
     public void StartCustomizeSperm()
     {
+        clearEventSystem();
         SceneManager.LoadScene("CustomizeSpermScene");
     }
 
     public void StartTutorial()
     {
+        clearEventSystem();
         SceneManager.LoadScene("TutorialLevel");
+    }
+
+    public void EnterLobby()
+    {
+        clearEventSystem();
+        SceneManager.LoadScene("Lobby");
     }
 
     public void LoseGame()
     {
+        clearEventSystem();
         SceneManager.LoadScene("YouLose");
     }
     public void WinGame()
@@ -74,11 +93,13 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetFloat("minTime", ctrl.time);
             }
         }
+        clearEventSystem();
         SceneManager.LoadScene("YouWin");
     }
 
     public void AltEnding()
     {
+        clearEventSystem();
         SceneManager.LoadScene("AltEnding");
     }
     #endregion
