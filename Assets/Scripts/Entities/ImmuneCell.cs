@@ -12,6 +12,8 @@ public class ImmuneCell : MonoBehaviour
     [Tooltip("The immune fluid shot by this immune cell")]
     private GameObject _immuneFluid;
 
+    private AudioSource _shootAudio;
+
     public float shootIntervalMin;
 
     public float shootIntervalMax;
@@ -20,6 +22,7 @@ public class ImmuneCell : MonoBehaviour
     void Start()
     {
         StartCoroutine(ShootCoroutine());
+        _shootAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,6 +40,7 @@ public class ImmuneCell : MonoBehaviour
                 Vector3 shootDir = (_detector.spermPosition - transform.position).normalized;
                 GameObject fl = Instantiate(_immuneFluid, transform.position + 2.2f * shootDir, transform.rotation);
                 fl.GetComponent<Rigidbody2D>().AddForce(800 * shootDir);
+                _shootAudio.Play();
             }
             yield return new WaitForSeconds(Random.Range(shootIntervalMin, shootIntervalMax));
         }

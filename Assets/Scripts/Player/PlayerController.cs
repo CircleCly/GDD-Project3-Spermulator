@@ -11,11 +11,13 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed;
     public float distTravelled;
     public float time;
+    
 
     #region References
     public Rigidbody2D rb;
     private EnergyControl _energyControl;
     private PHControl _pHControl;
+    private AudioSource _hitAudio;
     #endregion
 
     public bool controlWithMouse;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         _energyControl = GetComponent<EnergyControl>();
         _pHControl = GetComponent<PHControl>();
+        _hitAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -90,6 +93,7 @@ public class PlayerController : MonoBehaviour
         {
             _energyControl.ModifyEnergy(-_energyControl.crashEnergyDecrease);
             _pHControl.PH -= _pHControl.crashPHDecrease;
+            _hitAudio.Play();
         } else if (collision.gameObject.CompareTag("Bottom"))
         {
             GameManager.Instance.AltEnding();
