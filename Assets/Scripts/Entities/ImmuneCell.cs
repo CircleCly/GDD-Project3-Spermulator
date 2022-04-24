@@ -18,6 +18,8 @@ public class ImmuneCell : MonoBehaviour
 
     public float shootIntervalMax;
 
+    public float moveSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,11 @@ public class ImmuneCell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (_detector.spermDetected)
+        {
+            Vector3 moveDir = (_detector.spermPosition - transform.position).normalized;
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+        }
     }
 
     IEnumerator ShootCoroutine()
@@ -41,6 +47,8 @@ public class ImmuneCell : MonoBehaviour
                 GameObject fl = Instantiate(_immuneFluid, transform.position + 2.2f * shootDir, transform.rotation);
                 fl.GetComponent<Rigidbody2D>().AddForce(800 * shootDir);
                 _shootAudio.Play();
+
+                
             }
             yield return new WaitForSeconds(Random.Range(shootIntervalMin, shootIntervalMax));
         }

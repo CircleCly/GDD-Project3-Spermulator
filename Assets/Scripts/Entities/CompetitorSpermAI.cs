@@ -58,13 +58,13 @@ public class CompetitorSpermAI: MonoBehaviour
         
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-        transform.position = transform.position + Quaternion.Euler(0, 0, angle) * new Vector2(1, 0) * moveSpeed * Time.deltaTime;
+        transform.position = transform.position + 
+            Quaternion.Euler(0, 0, angle) * new Vector2(1, 0) * Random.Range(0.85f, 1.15f)
+            * moveSpeed * Time.deltaTime;
         if (Vector2.Distance(transform.position, _target.transform.position) < _reachThres)
         {
             _target = _target.GetComponent<Waypoint>().getNextWaypoint();
         }
-
-        
 
     }
 
