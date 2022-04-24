@@ -9,6 +9,7 @@ public class CompetitorSpermAI: MonoBehaviour
 
     private GameObject _target;
 
+
     #region General movement
 
     public float moveSpeed;
@@ -62,6 +63,8 @@ public class CompetitorSpermAI: MonoBehaviour
         {
             _target = _target.GetComponent<Waypoint>().getNextWaypoint();
         }
+
+        
 
     }
 

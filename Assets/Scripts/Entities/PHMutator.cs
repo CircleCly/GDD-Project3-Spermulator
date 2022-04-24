@@ -20,6 +20,8 @@ public class PHMutator : MonoBehaviour
 
     private EnergyControl _playerEnergy;
 
+    private AudioSource _as;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class PHMutator : MonoBehaviour
         _playerPHCtrl = _player.GetComponent<PHControl>();
         _playerRb = _player.GetComponent<Rigidbody2D>();
         _playerEnergy = _player.GetComponent<EnergyControl>();
+        _as = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -51,11 +54,20 @@ public class PHMutator : MonoBehaviour
                 _playerRb.AddForce(-stickyness * _playerRb.velocity);
                 _playerEnergy.ModifyEnergy(-energyDrain * Time.deltaTime);
             }
+            
         } else if (collision.gameObject.CompareTag("Competitor")) {
             PHControl phControl = collision.gameObject.GetComponent<PHControl>();
             EnergyControl energyControl = collision.gameObject.GetComponent<EnergyControl>();
             phControl.PH -= pHAcidDecline * Time.deltaTime;
             energyControl.ModifyEnergy(-pHAcidDecline * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            _as.Play();
         }
     }
 }
