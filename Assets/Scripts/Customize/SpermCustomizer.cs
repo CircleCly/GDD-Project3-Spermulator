@@ -10,7 +10,10 @@ public class SpermCustomizer : MonoBehaviour
 
     public void SetColor(int colorInd)
     {
-        player.GetComponent<PlayerController>().SetColor(allColors[colorInd]);
+        Color c = allColors[colorInd];
+        PlayerPrefs.SetFloat("playerR", c.r);
+        PlayerPrefs.SetFloat("playerG", c.g);
+        PlayerPrefs.SetFloat("playerB", c.b);
     }
 
     public void NextScene(int sceneInd)

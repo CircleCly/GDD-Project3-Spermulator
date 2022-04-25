@@ -20,7 +20,7 @@ public class EggTutorial : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.StartGame();
+            GameManager.Instance.StartCustomizeSperm();
         }
     }
 }

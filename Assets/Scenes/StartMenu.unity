@@ -2726,7 +2726,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2404612369468142179, guid: 16460f3d62cd9734aad70254562b6544, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: StartCustomizeSperm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

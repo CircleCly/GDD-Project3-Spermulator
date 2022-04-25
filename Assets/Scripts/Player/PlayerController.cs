@@ -12,9 +12,6 @@ public class PlayerController : MonoBehaviour
     public float distTravelled;
     public float time;
 
-
-    static Color myColor;
-
     #region References
     public Rigidbody2D rb;
     private EnergyControl _energyControl;
@@ -31,8 +28,6 @@ public class PlayerController : MonoBehaviour
         _energyControl = GetComponent<EnergyControl>();
         _pHControl = GetComponent<PHControl>();
         _hitAudio = GetComponent<AudioSource>();
-        GetComponent<SpriteRenderer>().color = myColor;
-        GetComponentInChildren<LineRenderer>().material.color = myColor;
     }
 
     // Update is called once per frame
@@ -46,6 +41,19 @@ public class PlayerController : MonoBehaviour
         _energyControl.ModifyEnergy(-_energyControl.energyDrainRotation * Mathf.Abs(finalRotation - initRotation));
         distTravelled += Vector2.Distance(initPosition, finalPosition);
         time += Time.deltaTime;
+        LoadCustomizedColor();
+    }
+    
+    void LoadCustomizedColor()
+    {
+        if (!PlayerPrefs.HasKey("playerR"))
+        {
+            return;
+        }
+        Color c = new Color(PlayerPrefs.GetFloat("playerR"), PlayerPrefs.GetFloat("playerG"),
+            PlayerPrefs.GetFloat("playerB"));
+        GetComponent<SpriteRenderer>().color = c;
+        GetComponentInChildren<LineRenderer>().material.color = c;
     }
 
     void ProcessInputs()
@@ -104,14 +112,6 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.AltEnding();
         }
-    }
-
-    public void SetColor(Color newColor)
-    {
-
-        myColor = newColor;
-        
-        GetComponent<SpriteRenderer>().color = myColor;
     }
 
 }
