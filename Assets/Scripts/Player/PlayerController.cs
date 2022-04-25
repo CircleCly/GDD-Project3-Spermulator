@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed;
     public float distTravelled;
     public float time;
-    
+
+
+    static Color myColor;
 
     #region References
     public Rigidbody2D rb;
@@ -20,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private AudioSource _hitAudio;
     #endregion
 
+    
+
     public bool controlWithMouse;
     // Start is called before the first frame update
     private void Start()
@@ -27,6 +31,8 @@ public class PlayerController : MonoBehaviour
         _energyControl = GetComponent<EnergyControl>();
         _pHControl = GetComponent<PHControl>();
         _hitAudio = GetComponent<AudioSource>();
+        GetComponent<SpriteRenderer>().color = myColor;
+        GetComponentInChildren<LineRenderer>().material.color = myColor;
     }
 
     // Update is called once per frame
@@ -98,6 +104,14 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.AltEnding();
         }
+    }
+
+    public void SetColor(Color newColor)
+    {
+
+        myColor = newColor;
+        
+        GetComponent<SpriteRenderer>().color = myColor;
     }
 
 }
