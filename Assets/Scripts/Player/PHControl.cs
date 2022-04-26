@@ -42,6 +42,10 @@ public class PHControl : MonoBehaviour
         if (_pH < minPH || _pH > maxPH)
         {
             Destroy(gameObject);
+            if (gameObject.CompareTag("Player"))
+            {
+                GameManager.Instance.LoseGame();
+            }
         }
     }
 

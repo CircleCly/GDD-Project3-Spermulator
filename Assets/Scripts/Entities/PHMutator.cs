@@ -12,23 +12,11 @@ public class PHMutator : MonoBehaviour
     // Energy decline speed while touching acid
     public float energyDrain;
 
-    private GameObject _player;
-
-    private PHControl _playerPHCtrl;
-
-    private Rigidbody2D _playerRb;
-
-    private EnergyControl _playerEnergy;
-
     private AudioSource _as;
 
     // Start is called before the first frame update
     void Start()
     {
-        _player = GameObject.Find("Player");
-        _playerPHCtrl = _player.GetComponent<PHControl>();
-        _playerRb = _player.GetComponent<Rigidbody2D>();
-        _playerEnergy = _player.GetComponent<EnergyControl>();
         _as = GetComponent<AudioSource>();
     }
 
@@ -42,18 +30,12 @@ public class PHMutator : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (_player == null)
-            {
-                _player = gameObject;
-                _playerPHCtrl = _player.GetComponent<PHControl>();
-                _playerRb = _player.GetComponent<Rigidbody2D>();
-                _playerEnergy = _player.GetComponent<EnergyControl>();
-            } else
-            {
-                _playerPHCtrl.PH -= pHAcidDecline * Time.deltaTime;
-                _playerRb.AddForce(-stickyness * _playerRb.velocity);
-                _playerEnergy.ModifyEnergy(-energyDrain * Time.deltaTime);
-            }
+            PHControl _playerPHCtrl = collision.gameObject.GetComponent<PHControl>();
+            Rigidbody2D _playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
+            EnergyControl _playerEnergy = collision.gameObject.GetComponent<EnergyControl>();
+            _playerPHCtrl.PH -= pHAcidDecline * Time.deltaTime;
+            _playerRb.AddForce(-stickyness * _playerRb.velocity);
+            _playerEnergy.ModifyEnergy(-energyDrain * Time.deltaTime);
             
         } else if (collision.gameObject.CompareTag("Competitor")) {
             PHControl phControl = collision.gameObject.GetComponent<PHControl>();

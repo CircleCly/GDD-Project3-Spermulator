@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private EnergyControl _energyControl;
     private PHControl _pHControl;
     private AudioSource _hitAudio;
+    private PhotonView _pv;
     #endregion
 
     
@@ -25,9 +27,17 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        _pv = GetComponent<PhotonView>();
         _energyControl = GetComponent<EnergyControl>();
         _pHControl = GetComponent<PHControl>();
         _hitAudio = GetComponent<AudioSource>();
+
+        if (!_pv.IsMine)
+        {
+            transform.Find("Camera").gameObject.SetActive(false);
+            transform.Find("Canvas").gameObject.SetActive(false);
+            LoadCustomizedColor();
+        }
     }
 
     // Update is called once per frame
@@ -41,7 +51,6 @@ public class PlayerController : MonoBehaviour
         _energyControl.ModifyEnergy(-_energyControl.energyDrainRotation * Mathf.Abs(finalRotation - initRotation));
         distTravelled += Vector2.Distance(initPosition, finalPosition);
         time += Time.deltaTime;
-        LoadCustomizedColor();
     }
     
     void LoadCustomizedColor()
@@ -58,14 +67,17 @@ public class PlayerController : MonoBehaviour
 
     void ProcessInputs()
     {
-        if (controlWithMouse)
+        if (_pv.IsMine)
         {
-            MouseControl();
-        } else
-        {
-            KeyboardControl();
+            if (controlWithMouse)
+            {
+                MouseControl();
+            }
+            else
+            {
+                KeyboardControl();
+            }
         }
-        
     }
 
     void MouseControl()
@@ -97,7 +109,7 @@ public class PlayerController : MonoBehaviour
             //transform.Rotate(new Vector3(0, 0, -0.5f * moveX));
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDir);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-            transform.position = transform.position + new Vector3(moveDir.x * moveSpeed, moveDir.y * moveSpeed, 0);
+            transform.position = transform.position + new Vector3(moveDir.x * moveSpeed * Time.deltaTime, moveDir.y * moveSpeed * Time.deltaTime, 0);
         }
     }
 

@@ -20,7 +20,7 @@ public class Egg : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.WinGame();
+            GameManager.Instance.WinGame(gameObject.GetComponent<PlayerController>());
         } else if (collision.gameObject.CompareTag("Competitor"))
         {
             GameManager.Instance.LoseGame();

@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager Instance = null;
 
@@ -23,10 +25,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Map" && GameObject.FindWithTag("Player") == null)
-        {
-            LoseGame();
-        }
     }
     #endregion
 
@@ -46,6 +44,43 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Map");
     }
 
+    public void StartSingleplayerGame()
+    {
+        Debug.Log("Started Singleplayer Game");
+        int randomRoomNumber = Random.Range(0, 10000);
+        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 1};
+        PhotonNetwork.CreateRoom("Room " + randomRoomNumber, roomOps);
+    }
+
+    public override void OnJoinedRoom()
+    {
+        if (PhotonNetwork.OfflineMode)
+        {
+            Debug.Log("You are now in a room.");
+            SceneManager.LoadScene("Map");
+        }
+    }
+
+    public void EnableOfflineMode()
+    {
+        if (!PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.OfflineMode = true;
+            return;
+        }
+        PhotonNetwork.Disconnect();
+    }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        PhotonNetwork.OfflineMode = true;
+    }
+
+    public void DisableOfflineMode()
+    {
+        PhotonNetwork.OfflineMode = false;
+    }
+
     public void StartCustomizeSperm()
     {
         clearEventSystem();
@@ -61,7 +96,7 @@ public class GameManager : MonoBehaviour
     public void EnterLobby()
     {
         clearEventSystem();
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("WaitingRoom");
     }
 
     public void LoseGame()
@@ -69,9 +104,8 @@ public class GameManager : MonoBehaviour
         clearEventSystem();
         SceneManager.LoadScene("YouLose");
     }
-    public void WinGame()
+    public void WinGame(PlayerController ctrl)
     {
-        PlayerController ctrl = GameObject.Find("Player").GetComponent<PlayerController>();
         PlayerPrefs.SetFloat("dist", ctrl.distTravelled);
         PlayerPrefs.SetFloat("time", ctrl.time);
         if (!PlayerPrefs.HasKey("minDist"))

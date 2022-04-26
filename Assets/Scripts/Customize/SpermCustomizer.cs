@@ -15,9 +15,4 @@ public class SpermCustomizer : MonoBehaviour
         PlayerPrefs.SetFloat("playerG", c.g);
         PlayerPrefs.SetFloat("playerB", c.b);
     }
-
-    public void NextScene(int sceneInd)
-    {
-        SceneManager.LoadScene(sceneInd);
-    }
 }

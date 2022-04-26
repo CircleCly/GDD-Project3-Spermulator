@@ -12,14 +12,9 @@ public class NetworkController : MonoBehaviourPunCallbacks
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected to the " + PhotonNetwork.CloudRegion + " server!");
+
     }
 }
