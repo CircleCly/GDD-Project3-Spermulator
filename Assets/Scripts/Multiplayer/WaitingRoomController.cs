@@ -17,13 +17,13 @@ public class WaitingRoomController : MonoBehaviourPunCallbacks
     private int minPlayersToStart;
 
     [SerializeField]
-    private Text roomCountDisplay;
+    private Text roomCountDisplay, timerToStartDisplay, title, nameDisplay;
 
     [SerializeField]
-    private Text timerToStartDisplay;
+    private GameObject duplicateNameError;
 
     [SerializeField]
-    private Text title;
+    private InputField nameInput;
 
     private bool readyToCountdown;
     private bool readyToStart;
@@ -47,6 +47,7 @@ public class WaitingRoomController : MonoBehaviourPunCallbacks
         timerToStartGame = maxWaitTime;
         title.text = PhotonNetwork.CurrentRoom.Name;
         PlayerCountUpdate();
+        PhotonNetwork.LocalPlayer.NickName = "Player " + playerCount;
     }
 
     void PlayerCountUpdate()
@@ -100,6 +101,7 @@ public class WaitingRoomController : MonoBehaviourPunCallbacks
     void Update()
     {
         WaitingForMorePlayers();
+        nameDisplay.text = "Your name: " + PhotonNetwork.LocalPlayer.NickName;
     }
 
     void WaitingForMorePlayers()
@@ -149,5 +151,18 @@ public class WaitingRoomController : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene("StartMenu");
+    }
+
+    public void ChangeName()
+    {
+        foreach (var p in PhotonNetwork.PlayerList)
+        {
+            if (!p.IsLocal && p.NickName.Equals(nameInput.text))
+            {
+                duplicateNameError.SetActive(true);
+                return;
+            }
+        }
+        PhotonNetwork.LocalPlayer.NickName = nameInput.text;
     }
 }

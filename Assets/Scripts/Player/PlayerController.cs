@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private PHControl _pHControl;
     private AudioSource _hitAudio;
     private PhotonView _pv;
+    [SerializeField]
+    private Text _nameTag;
     #endregion
 
     
@@ -36,24 +39,36 @@ public class PlayerController : MonoBehaviour
         {
             transform.Find("Camera").gameObject.SetActive(false);
             transform.Find("Canvas").gameObject.SetActive(false);
-            LoadCustomizedColor();
         }
+        if (_pv.Owner.NickName.Length == 0)
+        {
+            _nameTag.text = "Player";
+        }
+        else
+        {
+            _nameTag.text = _pv.Owner.NickName;
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        float initRotation = transform.rotation.eulerAngles.z;
-        Vector2 initPosition = transform.position;
-        ProcessInputs();
-        float finalRotation = transform.rotation.eulerAngles.z;
-        Vector2 finalPosition = transform.position;
-        _energyControl.ModifyEnergy(-_energyControl.energyDrainRotation * Mathf.Abs(finalRotation - initRotation));
-        distTravelled += Vector2.Distance(initPosition, finalPosition);
-        time += Time.deltaTime;
+        if (_pv.IsMine)
+        {
+            LoadCustomizedColor();
+            float initRotation = transform.rotation.eulerAngles.z;
+            Vector2 initPosition = transform.position;
+            ProcessInputs();
+            float finalRotation = transform.rotation.eulerAngles.z;
+            Vector2 finalPosition = transform.position;
+            _energyControl.ModifyEnergy(-_energyControl.energyDrainRotation * Mathf.Abs(finalRotation - initRotation));
+            distTravelled += Vector2.Distance(initPosition, finalPosition);
+            time += Time.deltaTime;
+        }
     }
     
-    void LoadCustomizedColor()
+    public void LoadCustomizedColor()
     {
         if (!PlayerPrefs.HasKey("playerR"))
         {
