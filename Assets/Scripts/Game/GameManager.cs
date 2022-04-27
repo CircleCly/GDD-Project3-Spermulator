@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public string winnerName = null;
 
+    private bool winnerAnnounced = false;
+
     private PhotonView _pv;
 
     #region Unity_functions
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (winnerName.Length != 0 && winnerName.Equals(_pv.Owner.NickName))
+        if (winnerName.Length != 0 && !winnerName.Equals(PhotonNetwork.NickName) && !winnerAnnounced)
         {
             LoseGame();
         }
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
         //clearEventSystem();
         PhotonNetwork.AutomaticallySyncScene = false;
         PhotonNetwork.LoadLevel("YouLose");
+        winnerAnnounced = true;
     }
     public void WinGame(PhotonView winnerPv, PlayerController ctrl)
     {
