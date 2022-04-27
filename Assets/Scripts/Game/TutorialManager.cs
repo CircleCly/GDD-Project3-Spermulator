@@ -28,7 +28,7 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _playerPHControl.PH = Mathf.Clamp(_playerPHControl.PH, _playerPHControl.minPH + 0.05f, _playerPHControl.maxPH - 0.05f);
+        _playerPHControl.PH = Mathf.Clamp(_playerPHControl.PH, _playerPHControl.minPH + 0.15f, _playerPHControl.maxPH - 0.15f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

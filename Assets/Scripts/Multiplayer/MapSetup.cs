@@ -23,6 +23,8 @@ public class MapSetup : MonoBehaviour
         );
         PhotonNetwork.Instantiate(
             Path.Combine("Prefabs", "Player"), pos, Quaternion.identity);
+        //PhotonNetwork.Instantiate(
+            //Path.Combine("Prefabs", "GameManager"), Vector3.zero, Quaternion.identity);
         
     }
 

@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class GameManager : MonoBehaviourPunCallbacks
+public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
 
     public string winnerName = null;
 
-    private static PhotonView _pv;
+    private PhotonView _pv;
 
     #region Unity_functions
     private void Awake()
@@ -34,98 +34,55 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-    }
-    #endregion
-
-    void clearEventSystem()
-    {
-        GameObject es = GameObject.Find("EventSystem");
-        if (es != null)
+        if (winnerName.Length != 0 && winnerName.Equals(_pv.Owner.NickName))
         {
-            Destroy(es);
+            LoseGame();
         }
     }
+    #endregion
 
     #region Scene_transitions
     public void StartGame()
     {
-        clearEventSystem();
-        SceneManager.LoadScene("Map");
-    }
-
-    public void StartSingleplayerGame()
-    {
-        Debug.Log("Started Singleplayer Game");
-        PhotonNetwork.NickName = "Player";
-        int randomRoomNumber = Random.Range(0, 10000);
-        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 1};
-        PhotonNetwork.CreateRoom("Room " + randomRoomNumber, roomOps);
-    }
-
-    public override void OnJoinedRoom()
-    {
-        if (PhotonNetwork.OfflineMode)
-        {
-            Debug.Log("You are now in a room.");
-            SceneManager.LoadScene("Map");
-        }
-    }
-
-    public void EnableOfflineMode()
-    {
-        if (!PhotonNetwork.IsConnected)
-        {
-            PhotonNetwork.OfflineMode = true;
-            return;
-        }
-        PhotonNetwork.Disconnect();
-    }
-
-    public override void OnDisconnected(DisconnectCause cause)
-    {
-        PhotonNetwork.OfflineMode = true;
-    }
-
-    public void DisableOfflineMode()
-    {
-        PhotonNetwork.OfflineMode = false;
+        //clearEventSystem();
+        PhotonNetwork.LoadLevel("Map");
     }
 
     public void StartCustomizeSperm()
     {
-        clearEventSystem();
-        SceneManager.LoadScene("CustomizeSpermScene");
+        //clearEventSystem();
+        PhotonNetwork.LoadLevel("CustomizeSpermScene");
     }
 
     public void StartTutorial()
     {
-        clearEventSystem();
-        SceneManager.LoadScene("TutorialLevel");
+        //clearEventSystem();
+        PhotonNetwork.LoadLevel("TutorialLevel");
     }
 
     public void EnterLobby()
     {
-        clearEventSystem();
-        SceneManager.LoadScene("WaitingRoom");
+        //clearEventSystem();
+        PhotonNetwork.LoadLevel("WaitingRoom");
     }
 
     public void LoseGame()
     {
-        clearEventSystem();
-        SceneManager.LoadScene("YouLose");
+        //clearEventSystem();
+        PhotonNetwork.AutomaticallySyncScene = false;
+        PhotonNetwork.LoadLevel("YouLose");
     }
-    public void WinGame(PlayerController ctrl, string whoWon)
+    public void WinGame(PhotonView winnerPv, PlayerController ctrl)
     {
-        winnerName = whoWon;
-        _pv.RPC("RPC_LoseOthers", RpcTarget.Others);
+        if (winnerPv.IsMine)
+        {
+            _pv.RPC("RPC_UpdateWinner", RpcTarget.AllBuffered, winnerPv.Owner.NickName);
+        }
         PlayerPrefs.SetFloat("dist", ctrl.distTravelled);
         PlayerPrefs.SetFloat("time", ctrl.time);
-        if (!PlayerPrefs.HasKey("minDist"))
+        if (!PlayerPrefs.HasKey("minDist") && !PlayerPrefs.HasKey("minTime"))
         {
             PlayerPrefs.SetFloat("minDist", ctrl.distTravelled);
-        }
-        if (!PlayerPrefs.HasKey("minTime"))
-        {
             PlayerPrefs.SetFloat("minTime", ctrl.time);
         }
         else
@@ -139,20 +96,22 @@ public class GameManager : MonoBehaviourPunCallbacks
                 PlayerPrefs.SetFloat("minTime", ctrl.time);
             }
         }
-        clearEventSystem();
-        SceneManager.LoadScene("YouWin");
+        //clearEventSystem();
+        PhotonNetwork.AutomaticallySyncScene = false;
+        PhotonNetwork.LoadLevel("YouWin");
     }
 
     [PunRPC]
-    public void RPC_LoseOthers()
+    public void RPC_UpdateWinner(string whoWon)
     {
-        LoseGame();
+        winnerName = whoWon;
     }
 
     public void AltEnding()
     {
-        clearEventSystem();
-        SceneManager.LoadScene("AltEnding");
+        //clearEventSystem();
+        PhotonNetwork.AutomaticallySyncScene = false;
+        PhotonNetwork.LoadLevel("AltEnding");
     }
     #endregion
 
@@ -164,7 +123,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void QuitToTitle()
     {
-        clearEventSystem();
+        //clearEventSystem();
         SceneManager.LoadScene("StartMenu");
+        PhotonNetwork.Disconnect();
     }
 }

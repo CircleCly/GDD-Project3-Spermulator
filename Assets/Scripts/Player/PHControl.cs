@@ -5,9 +5,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class PHControl : MonoBehaviour
 {
+    private PhotonView _pv;
+
     // The pH value of this current object
     private float _pH;
 
@@ -31,6 +34,7 @@ public class PHControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _pv = GetComponent<PhotonView>();
         _pH = startPH;
     }
 
@@ -41,8 +45,8 @@ public class PHControl : MonoBehaviour
         
         if (_pH < minPH || _pH > maxPH)
         {
-            Destroy(gameObject);
-            if (gameObject.CompareTag("Player"))
+            PhotonNetwork.Destroy(gameObject);
+            if (gameObject.CompareTag("Player") && _pv.IsMine)
             {
                 GameManager.Instance.LoseGame();
             }

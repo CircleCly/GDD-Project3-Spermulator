@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class ShowHighscore : MonoBehaviour
 {
-    public Text highscoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +14,7 @@ public class ShowHighscore : MonoBehaviour
 
     private void Update()
     {
-        highscoreText.text =
+        GetComponent<Text>().text =
             " Your Distance: " + Math.Round(PlayerPrefs.GetFloat("dist"), 2) + " millimeters\n" +
             " Your Time: " + Math.Round(PlayerPrefs.GetFloat("time"), 2) + " seconds \n" +
             " Shortest Distance: " + Math.Round(PlayerPrefs.GetFloat("minDist"), 2) + " millimeters, \n" +

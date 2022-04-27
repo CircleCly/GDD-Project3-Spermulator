@@ -50,8 +50,8 @@ public class PlayerController : MonoBehaviour
     {
         if (_pv.IsMine)
         {
-            LoadCustomizedColor();
-            _pv.RPC("RPC_SendColor", RpcTarget.Others);
+            Color c = GetCustomizedColor();
+            _pv.RPC("RPC_SendColor", RpcTarget.AllBuffered, c.r, c.g, c.b);
             float initRotation = transform.rotation.eulerAngles.z;
             Vector2 initPosition = transform.position;
             ProcessInputs();
@@ -64,21 +64,22 @@ public class PlayerController : MonoBehaviour
     }
     
     [PunRPC]
-    public void RPC_SendColor()
+    public void RPC_SendColor(float r, float g, float b)
     {
-        LoadCustomizedColor();
+        Color c = new Color(r, g, b);
+        GetComponent<SpriteRenderer>().color = c;
+        GetComponentInChildren<LineRenderer>().material.color = c;
     }
 
-    public void LoadCustomizedColor()
+    public Color GetCustomizedColor()
     {
         if (!PlayerPrefs.HasKey("playerR"))
         {
-            return;
+            return Color.white;
         }
         Color c = new Color(PlayerPrefs.GetFloat("playerR"), PlayerPrefs.GetFloat("playerG"),
             PlayerPrefs.GetFloat("playerB"));
-        GetComponent<SpriteRenderer>().color = c;
-        GetComponentInChildren<LineRenderer>().material.color = c;
+        return c;
     }
 
     void ProcessInputs()
@@ -141,5 +142,7 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.AltEnding();
         }
     }
+
+
 
 }

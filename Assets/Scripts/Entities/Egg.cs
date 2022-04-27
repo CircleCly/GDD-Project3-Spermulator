@@ -21,8 +21,7 @@ public class Egg : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            string whoWon = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
-            GameManager.Instance.WinGame(collision.gameObject.GetComponent<PlayerController>(), whoWon);
+            GameManager.Instance.WinGame(collision.gameObject.GetComponent<PhotonView>(), collision.gameObject.GetComponent<PlayerController>());
         } else if (collision.gameObject.CompareTag("Competitor"))
         {
             GameManager.Instance.LoseGame();

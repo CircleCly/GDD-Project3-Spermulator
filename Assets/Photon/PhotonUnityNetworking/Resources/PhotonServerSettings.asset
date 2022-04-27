@@ -43,6 +43,7 @@ MonoBehaviour:
   - RPC_AddCharacter
   - RPC_SendColor
   - RPC_LoseOthers
+  - RPC_UpdateWinner
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
