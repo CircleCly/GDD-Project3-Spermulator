@@ -1951,13 +1951,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc7574931e34d74ab00a25421792f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
+  moveSpeed: 5
   rotationSpeed: 400
   distTravelled: 0
   time: 0
   rb: {fileID: 3080876480001786432}
   _nameTag: {fileID: 6624524926807576272}
-  controlWithMouse: 0
+  controlWithMouse: 1
 --- !u!70 &3080876480001786439
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

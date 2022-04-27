@@ -8,7 +8,7 @@ public class NametagController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position - transform.parent.position;
+        offset = new Vector3(0, 0.8f);
     }
 
     // Update is called once per frame
