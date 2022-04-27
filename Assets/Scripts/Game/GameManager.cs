@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager Instance = null;
 
+    public string winnerName = null;
+
+    private static PhotonView _pv;
+
     #region Unity_functions
     private void Awake()
     {
@@ -21,6 +25,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        _pv = GetComponent<PhotonView>();
     }
 
     private void Update()
@@ -47,6 +56,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void StartSingleplayerGame()
     {
         Debug.Log("Started Singleplayer Game");
+        PhotonNetwork.NickName = "Player";
         int randomRoomNumber = Random.Range(0, 10000);
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 1};
         PhotonNetwork.CreateRoom("Room " + randomRoomNumber, roomOps);
@@ -104,8 +114,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         clearEventSystem();
         SceneManager.LoadScene("YouLose");
     }
-    public void WinGame(PlayerController ctrl)
+    public void WinGame(PlayerController ctrl, string whoWon)
     {
+        winnerName = whoWon;
+        _pv.RPC("RPC_LoseOthers", RpcTarget.Others);
         PlayerPrefs.SetFloat("dist", ctrl.distTravelled);
         PlayerPrefs.SetFloat("time", ctrl.time);
         if (!PlayerPrefs.HasKey("minDist"))
@@ -131,6 +143,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("YouWin");
     }
 
+    [PunRPC]
+    public void RPC_LoseOthers()
+    {
+        LoseGame();
+    }
+
     public void AltEnding()
     {
         clearEventSystem();
@@ -142,5 +160,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PlayerPrefs.DeleteKey("minTime");
         PlayerPrefs.DeleteKey("minDist");
+    }
+
+    public void QuitToTitle()
+    {
+        clearEventSystem();
+        SceneManager.LoadScene("StartMenu");
     }
 }

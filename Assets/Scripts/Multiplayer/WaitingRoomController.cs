@@ -150,7 +150,6 @@ public class WaitingRoomController : MonoBehaviourPunCallbacks
     public void DelayCancel()
     {
         PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene("StartMenu");
     }
 
     public void ChangeName()
@@ -164,5 +163,10 @@ public class WaitingRoomController : MonoBehaviourPunCallbacks
             }
         }
         PhotonNetwork.LocalPlayer.NickName = nameInput.text;
+    }
+
+    public override void OnLeftRoom()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 }

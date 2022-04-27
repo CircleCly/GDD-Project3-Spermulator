@@ -40,14 +40,8 @@ public class PlayerController : MonoBehaviour
             transform.Find("Camera").gameObject.SetActive(false);
             transform.Find("Canvas").gameObject.SetActive(false);
         }
-        if (_pv.Owner.NickName.Length == 0)
-        {
-            _nameTag.text = "Player";
-        }
-        else
-        {
-            _nameTag.text = _pv.Owner.NickName;
-        }
+
+        _nameTag.text = _pv.Owner.NickName;
         
     }
 
@@ -57,6 +51,7 @@ public class PlayerController : MonoBehaviour
         if (_pv.IsMine)
         {
             LoadCustomizedColor();
+            _pv.RPC("RPC_SendColor", RpcTarget.Others);
             float initRotation = transform.rotation.eulerAngles.z;
             Vector2 initPosition = transform.position;
             ProcessInputs();
@@ -68,6 +63,12 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    [PunRPC]
+    public void RPC_SendColor()
+    {
+        LoadCustomizedColor();
+    }
+
     public void LoadCustomizedColor()
     {
         if (!PlayerPrefs.HasKey("playerR"))

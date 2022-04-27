@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public class Egg : MonoBehaviour
@@ -20,7 +21,8 @@ public class Egg : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.WinGame(gameObject.GetComponent<PlayerController>());
+            string whoWon = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
+            GameManager.Instance.WinGame(collision.gameObject.GetComponent<PlayerController>(), whoWon);
         } else if (collision.gameObject.CompareTag("Competitor"))
         {
             GameManager.Instance.LoseGame();
