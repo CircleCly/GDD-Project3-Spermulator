@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using System.IO;
 
 public class ImmuneCell : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class ImmuneCell : MonoBehaviour
     [SerializeField]
     [Tooltip("The immune fluid shot by this immune cell")]
     private GameObject _immuneFluid;
+
+    private PhotonView _pv;
 
     private AudioSource _shootAudio;
 
@@ -25,15 +29,19 @@ public class ImmuneCell : MonoBehaviour
     {
         StartCoroutine(ShootCoroutine());
         _shootAudio = GetComponent<AudioSource>();
+        _pv = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_detector.spermDetected)
+        if (_pv.IsMine)
         {
-            Vector3 moveDir = (_detector.spermPosition - transform.position).normalized;
-            transform.position += moveDir * moveSpeed * Time.deltaTime;
+            if (_detector.spermDetected)
+            {
+                Vector3 moveDir = (_detector.spermPosition - transform.position).normalized;
+                transform.position += moveDir * moveSpeed * Time.deltaTime;
+            }
         }
     }
 
@@ -44,7 +52,8 @@ public class ImmuneCell : MonoBehaviour
             if (_detector.spermDetected)
             {
                 Vector3 shootDir = (_detector.spermPosition - transform.position).normalized;
-                GameObject fl = Instantiate(_immuneFluid, transform.position + 2.2f * shootDir, transform.rotation);
+                GameObject fl = PhotonNetwork.Instantiate(Path.Combine("Prefabs", _immuneFluid.name),
+                    transform.position + 2.2f * shootDir, transform.rotation);
                 fl.GetComponent<Rigidbody2D>().AddForce(800 * shootDir);
                 _shootAudio.Play();
 

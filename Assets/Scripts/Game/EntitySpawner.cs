@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using System.IO;
 
 public class EntitySpawner : MonoBehaviour
 {
@@ -8,13 +10,15 @@ public class EntitySpawner : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        Bacteria.numBacteria = entitySpawnData[0].initialCount;
-        for (int i = 0; i < 2; i++)
+        if (PhotonNetwork.IsMasterClient)
         {
-            RandomSpawnEntity(entitySpawnData[i]);
+            Bacteria.numBacteria = entitySpawnData[0].initialCount;
+            for (int i = 0; i < 2; i++)
+            {
+                RandomSpawnEntity(entitySpawnData[i]);
+            }
+            SpawnCompetitorSperm(entitySpawnData[2]);
         }
-        SpawnCompetitorSperm(entitySpawnData[2]);
-        
     }
 
     private void RandomSpawnEntity(EntitySpawnData esd)
@@ -26,7 +30,7 @@ public class EntitySpawner : MonoBehaviour
                 Random.Range(b.min.x, b.max.x),
                 Random.Range(b.min.y, b.max.y)
             );
-            Instantiate(esd.entity, pos, transform.rotation);
+            PhotonNetwork.Instantiate(Path.Combine("Prefabs", esd.entity.name), pos, transform.rotation);
         }
     }
 
@@ -39,15 +43,14 @@ public class EntitySpawner : MonoBehaviour
                 Random.Range(b.min.x, b.max.x),
                 Random.Range(b.min.y, b.max.y)
             );
-            GameObject competitor = Instantiate(esd.entity, pos, transform.rotation);
+            GameObject competitor = PhotonNetwork.Instantiate(Path.Combine("Prefabs", esd.entity.name), pos, transform.rotation);
             CompetitorSpermAI ai = competitor.GetComponent<CompetitorSpermAI>();
             ai.evasionImportance = Random.Range(0.4f, 0.7f);
             ai.moveSpeed = Random.Range(2.2f, 3f);
             ai.rotationSpeed = Random.Range(15f, 20f);
             ai.firstWaypoint = GameObject.Find("WP0");
             Color c = Color.HSVToRGB(Random.Range(0f, 1f), 0.6f, 0.8f);
-            competitor.GetComponent<SpriteRenderer>().color = c;
-            competitor.GetComponentInChildren<LineRenderer>().material.color = c;
+            ai.c = c;
 
         }
     }

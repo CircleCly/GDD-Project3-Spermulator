@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using System.IO;
 
 public class Bacteria : MonoBehaviour
 {
@@ -70,7 +72,8 @@ public class Bacteria : MonoBehaviour
             bool spawnBacteria = Random.Range(0f, 1f) < probSpawn;
             if (spawnBacteria)
             {
-                GameObject newBacteria = Instantiate(transform.parent.gameObject);
+                GameObject newBacteria = PhotonNetwork.Instantiate(Path.Combine("Prefabs", 
+                    transform.parent.gameObject.name), Vector3.zero, Quaternion.identity);
                 newBacteria.transform.GetChild(0).GetComponent<Rigidbody2D>().AddForce(300 * Random.insideUnitCircle);
                 numBacteria++;
             }

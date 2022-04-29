@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class CompetitorSpermAI: MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class CompetitorSpermAI: MonoBehaviour
     public GameObject firstWaypoint;
 
     private GameObject _target;
+
+    private PhotonView _pv;
+
+    public Color c;
 
 
     #region General movement
@@ -37,10 +42,33 @@ public class CompetitorSpermAI: MonoBehaviour
         _pHControl = GetComponent<PHControl>();
         _sensor = GetComponentInChildren<CompetitorSensor>();
         _target = firstWaypoint;
+        _pv = GetComponent<PhotonView>();
+        if (_pv.IsMine)
+        {
+            _pv.RPC("RPC_SendColor", RpcTarget.AllBuffered, c.r, c.g, c.b);
+        }
+    }
+
+    [PunRPC]
+    public void RPC_SendColor(float r, float g, float b)
+    {
+        Color c = new Color(r, g, b);
+        Debug.Log(c);
+        GetComponent<SpriteRenderer>().color = c;
+        GetComponentInChildren<LineRenderer>().material.color = c;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        if (_pv.IsMine)
+        {
+            ProcessMovement();
+        }
+
+    }
+
+    private void ProcessMovement()
     {
         Vector2 moveDir = (_target.transform.position - transform.position).normalized;
         float waypointAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
@@ -49,23 +77,23 @@ public class CompetitorSpermAI: MonoBehaviour
         if (evadeDir.Equals(Vector2.zero))
         {
             angle = waypointAngle;
-        } else
+        }
+        else
         {
             float evasionAngle = Mathf.Atan2(evadeDir.y, evadeDir.x) * Mathf.Rad2Deg;
             angle = waypointAngle * (1 - evasionImportance) + evasionAngle * evasionImportance;
         }
-        
-        
+
+
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-        transform.position = transform.position + 
+        transform.position = transform.position +
             Quaternion.Euler(0, 0, angle) * new Vector2(1, 0) * Random.Range(0.85f, 1.15f)
             * moveSpeed * Time.deltaTime;
         if (Vector2.Distance(transform.position, _target.transform.position) < _reachThres)
         {
             _target = _target.GetComponent<Waypoint>().getNextWaypoint();
         }
-
     }
 
     Vector2 GetEvadeDirection()
