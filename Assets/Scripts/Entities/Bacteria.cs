@@ -46,7 +46,7 @@ public class Bacteria : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         StartCoroutine(ReplicateCoroutine());
         StartCoroutine(DeathTimer());
-        _pv = GetComponent<PhotonView>();
+        _pv = GetComponentInParent<PhotonView>();
     }
 
     // Update is called once per frame
