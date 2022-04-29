@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(winnerName);
         if (winnerName.Length != 0 && !winnerName.Equals(PhotonNetwork.NickName) && !winnerAnnounced)
         {
             LoseGame();

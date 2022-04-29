@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class DestroyInXSeconds : MonoBehaviour
 {
@@ -32,6 +33,6 @@ public class DestroyInXSeconds : MonoBehaviour
             yield return null;
             destroyTimer += Time.deltaTime;
         }
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 }

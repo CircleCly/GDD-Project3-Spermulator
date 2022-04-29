@@ -57,7 +57,7 @@ public class Bacteria : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_pv.IsMine)
+        if (_pv.Owner.IsMasterClient)
         {
             _rb.AddForce(_moveForce * Random.insideUnitCircle);
             _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, _maxSpeed);
