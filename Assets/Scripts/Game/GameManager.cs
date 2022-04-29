@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         }
         else if (Instance != this)
         {
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
     }
@@ -128,7 +128,8 @@ public class GameManager : MonoBehaviour
     public void QuitToTitle()
     {
         //clearEventSystem();
-        SceneManager.LoadScene("StartMenu");
+        PhotonNetwork.LoadLevel("StartMenu");
         PhotonNetwork.Disconnect();
     }
+
 }

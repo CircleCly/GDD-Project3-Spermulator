@@ -167,6 +167,7 @@ public class WaitingRoomController : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        SceneManager.LoadScene("StartMenu");
+        PhotonNetwork.Disconnect();
+        PhotonNetwork.LoadLevel("StartMenu");
     }
 }

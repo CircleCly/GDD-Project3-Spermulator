@@ -1957,7 +1957,7 @@ MonoBehaviour:
   time: 0
   rb: {fileID: 3080876480001786432}
   _nameTag: {fileID: 6624524926807576272}
-  controlWithMouse: 1
+  controlWithMouse: 0
 --- !u!70 &3080876480001786439
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

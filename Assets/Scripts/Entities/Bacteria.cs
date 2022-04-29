@@ -32,6 +32,8 @@ public class Bacteria : MonoBehaviour
 
     private Rigidbody2D _rb;
 
+    private PhotonView _pv;
+
     public static int numBacteria = 0;
 
 
@@ -44,6 +46,7 @@ public class Bacteria : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         StartCoroutine(ReplicateCoroutine());
         StartCoroutine(DeathTimer());
+        _pv = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
@@ -54,8 +57,11 @@ public class Bacteria : MonoBehaviour
 
     void FixedUpdate()
     {
-        _rb.AddForce(_moveForce * Random.insideUnitCircle);
-        _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, _maxSpeed);
+        if (_pv.IsMine)
+        {
+            _rb.AddForce(_moveForce * Random.insideUnitCircle);
+            _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, _maxSpeed);
+        }
     }
 
     private void LateUpdate()
