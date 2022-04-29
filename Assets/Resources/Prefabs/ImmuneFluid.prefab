@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1994585640898038206}
   - component: {fileID: 1994585640898038209}
   - component: {fileID: 1994585640898038207}
+  - component: {fileID: 7881120847116534099}
   m_Layer: 0
   m_Name: ImmuneFluid
   m_TagString: Base
@@ -136,3 +137,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _basicArea: {fileID: 4700276213011364556, guid: 46fce0cf74ec1a34983dd16a5679c8b6, type: 3}
+--- !u!114 &7881120847116534099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994585640898038210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
