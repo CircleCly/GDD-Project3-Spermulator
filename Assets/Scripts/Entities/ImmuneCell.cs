@@ -35,7 +35,7 @@ public class ImmuneCell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_pv.Owner.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient)
         {
             if (_detector.spermDetected)
             {
@@ -49,7 +49,7 @@ public class ImmuneCell : MonoBehaviour
     {
         while (true)
         {
-            if (_detector.spermDetected)
+            if (_detector.spermDetected && PhotonNetwork.IsMasterClient)
             {
                 Vector3 shootDir = (_detector.spermPosition - transform.position).normalized;
                 GameObject fl = PhotonNetwork.Instantiate(Path.Combine("Prefabs", _immuneFluid.name),

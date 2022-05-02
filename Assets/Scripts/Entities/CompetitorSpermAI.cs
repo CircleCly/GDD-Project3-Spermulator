@@ -61,7 +61,7 @@ public class CompetitorSpermAI: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(PhotonNetwork.IsMasterClient);
+        //Debug.Log(PhotonNetwork.IsMasterClient);
         if (PhotonNetwork.IsMasterClient)
         {
             ProcessMovement();
@@ -71,6 +71,7 @@ public class CompetitorSpermAI: MonoBehaviour
 
     private void ProcessMovement()
     {
+        Debug.Log(_target.transform.position);
         Vector2 moveDir = (_target.transform.position - transform.position).normalized;
         float waypointAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
         Vector2 evadeDir = GetEvadeDirection();
@@ -84,7 +85,6 @@ public class CompetitorSpermAI: MonoBehaviour
             float evasionAngle = Mathf.Atan2(evadeDir.y, evadeDir.x) * Mathf.Rad2Deg;
             angle = waypointAngle * (1 - evasionImportance) + evasionAngle * evasionImportance;
         }
-
 
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);

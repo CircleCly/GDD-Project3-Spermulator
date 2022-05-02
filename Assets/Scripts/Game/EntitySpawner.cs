@@ -17,7 +17,10 @@ public class EntitySpawner : MonoBehaviour
             {
                 RandomSpawnEntity(entitySpawnData[i]);
             }
-            SpawnCompetitorSperm(entitySpawnData[2]);
+            if (PhotonNetwork.OfflineMode)
+            {
+                SpawnCompetitorSperm(entitySpawnData[2]);
+            }
         }
     }
 
@@ -30,7 +33,8 @@ public class EntitySpawner : MonoBehaviour
                 Random.Range(b.min.x, b.max.x),
                 Random.Range(b.min.y, b.max.y)
             );
-            PhotonNetwork.Instantiate(Path.Combine("Prefabs", esd.entity.name), pos, transform.rotation);
+            GameObject g = PhotonNetwork.InstantiateRoomObject(Path.Combine("Prefabs", esd.entity.name), pos, transform.rotation);
+            GameManager.Instance.masterPVs.Add(g.GetComponent<PhotonView>());
         }
     }
 
@@ -43,7 +47,7 @@ public class EntitySpawner : MonoBehaviour
                 Random.Range(b.min.x, b.max.x),
                 Random.Range(b.min.y, b.max.y)
             );
-            GameObject competitor = PhotonNetwork.Instantiate(Path.Combine("Prefabs", esd.entity.name), pos, transform.rotation);
+            GameObject competitor = PhotonNetwork.InstantiateRoomObject(Path.Combine("Prefabs", esd.entity.name), pos, transform.rotation);
             CompetitorSpermAI ai = competitor.GetComponent<CompetitorSpermAI>();
             ai.evasionImportance = Random.Range(0.4f, 0.7f);
             ai.moveSpeed = Random.Range(2.2f, 3f);
@@ -51,7 +55,7 @@ public class EntitySpawner : MonoBehaviour
             ai.firstWaypoint = GameObject.Find("WP0");
             Color c = Color.HSVToRGB(Random.Range(0f, 1f), 0.6f, 0.8f);
             ai.c = c;
-
+            GameManager.Instance.masterPVs.Add(competitor.GetComponent<PhotonView>());
         }
     }
 }

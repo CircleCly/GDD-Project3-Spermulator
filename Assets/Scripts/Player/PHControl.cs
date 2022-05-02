@@ -49,7 +49,7 @@ public class PHControl : MonoBehaviour
             {
                 PhotonNetwork.Destroy(gameObject);
                 GameManager.Instance.LoseGame();
-            } else
+            } else if (_pv.IsMine)
             {
                 PhotonNetwork.Destroy(gameObject);
             }

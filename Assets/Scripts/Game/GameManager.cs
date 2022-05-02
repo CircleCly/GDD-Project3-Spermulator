@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager Instance = null;
 
@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private bool winnerAnnounced = false;
 
     private PhotonView _pv;
+
+    public List<PhotonView> masterPVs;
 
     #region Unity_functions
     private void Awake()
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _pv = GetComponent<PhotonView>();
+        masterPVs = new List<PhotonView>();
     }
 
     private void Update()
@@ -73,6 +76,7 @@ public class GameManager : MonoBehaviour
         //clearEventSystem();
         PhotonNetwork.AutomaticallySyncScene = false;
         PhotonNetwork.LoadLevel("YouLose");
+        PhotonNetwork.LeaveRoom();
         winnerAnnounced = true;
     }
     public void WinGame(PhotonView winnerPv, PlayerController ctrl)
@@ -130,6 +134,12 @@ public class GameManager : MonoBehaviour
         PhotonNetwork.LoadLevel("StartMenu");
     }
 
-
-
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        _pv.TransferOwnership(newMasterClient);
+        foreach (PhotonView v in masterPVs)
+        {
+            v.TransferOwnership(newMasterClient);
+        }
+    }
 }
