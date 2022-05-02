@@ -49,7 +49,10 @@ public class PHMutator : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            _as.Play();
+            if (!_as.isPlaying)
+            {
+                _as.Play();
+            }
         }
     }
 }

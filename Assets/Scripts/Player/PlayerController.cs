@@ -18,7 +18,11 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     private EnergyControl _energyControl;
     private PHControl _pHControl;
-    private AudioSource _hitAudio;
+    private AudioSource _as;
+
+    [SerializeField]
+    private AudioClip _collide, _thrust;
+
     private PhotonView _pv;
     [SerializeField]
     private Text _nameTag;
@@ -33,7 +37,7 @@ public class PlayerController : MonoBehaviour
         _pv = GetComponent<PhotonView>();
         _energyControl = GetComponent<EnergyControl>();
         _pHControl = GetComponent<PHControl>();
-        _hitAudio = GetComponent<AudioSource>();
+        _as = GetComponent<AudioSource>();
 
         if (!_pv.IsMine)
         {
@@ -145,7 +149,7 @@ public class PlayerController : MonoBehaviour
         {
             _energyControl.ModifyEnergy(-_energyControl.crashEnergyDecrease);
             _pHControl.PH -= _pHControl.crashPHDecrease;
-            _hitAudio.Play();
+            _as.PlayOneShot(_collide);
         } else if (collision.gameObject.CompareTag("Bottom"))
         {
             GameManager.Instance.AltEnding();
@@ -159,6 +163,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 Dash();
+                _as.PlayOneShot(_thrust);
                 yield return new WaitForSeconds(2.5f);
             } else
             {

@@ -475,14 +475,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Collisions with the wall decreases your pH.
+  m_text: 'Collisions with the wall decreases your pH and energy.
 
 
-    Your energy will be
-    drained as well.
+    Green mucus
+    decreases your speed.
 
 
-    Avoid hitting walls!
+    Avoid these obstacles!
 
 '
   m_isRightToLeft: 0
@@ -818,7 +818,7 @@ RectTransform:
   m_Children:
   - {fileID: 387435762}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -906,7 +906,7 @@ Transform:
   m_LocalScale: {x: 21.426994, y: 16.449118, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &566911987
 GameObject:
@@ -1157,7 +1157,7 @@ Transform:
   - {fileID: 2143750113}
   - {fileID: 869743354}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &771796519
 PrefabInstance:
@@ -1465,7 +1465,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854211377
 GameObject:
@@ -1844,7 +1844,7 @@ Transform:
   - {fileID: 1820703031}
   - {fileID: 1024154124}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &981397609
 GameObject:
@@ -2252,7 +2252,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1214876092
 MonoBehaviour:
@@ -2403,7 +2403,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1248272659
 AudioSource:
@@ -2924,6 +2924,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542058375}
   m_CullTransparentMesh: 1
+--- !u!1001 &1631898250
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4595256715650319477, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_Name
+      value: Mucus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.9887173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9887173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.33145288
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 39.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595256715650319483, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559916127110252442, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e3d83838dc175b4aa2cf353a15f4d1b, type: 3}
 --- !u!1 &1683417793
 GameObject:
   m_ObjectHideFlags: 0
@@ -3468,7 +3541,7 @@ Transform:
   - {fileID: 1088862455}
   - {fileID: 522163801}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2125450988
 GameObject:

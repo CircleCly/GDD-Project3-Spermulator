@@ -6352,11 +6352,11 @@ MonoBehaviour:
   - entityName: Bacteria
     spawnArea: {fileID: 276765604}
     entity: {fileID: 5579143550202326806, guid: 3f268bd19cd58bd47a434c0d9f6a1007, type: 3}
-    initialCount: 20
+    initialCount: 15
   - entityName: Immune Cell
     spawnArea: {fileID: 744401080}
     entity: {fileID: 2698035374109404301, guid: ae25884559a38ad40953e28506726bcf, type: 3}
-    initialCount: 10
+    initialCount: 8
   - entityName: Mucus Cell
     spawnArea: {fileID: 14264781}
     entity: {fileID: 5370958384096026571, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
@@ -7106,64 +7106,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dc3fe8de4ad8214ba8bcd5fbbb32b5e, type: 3}
---- !u!1001 &8068237014752869225
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1348818965474519298, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: sceneViewId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026571, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_Name
-      value: MucusCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026613, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026613, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026613, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -39.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026613, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026613, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026613, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026613, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026613, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026613, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026613, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370958384096026613, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
