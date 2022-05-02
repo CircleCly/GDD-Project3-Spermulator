@@ -79,7 +79,7 @@ public class Bacteria : MonoBehaviour
             if (spawnBacteria)
             {
                 GameObject newBacteria = PhotonNetwork.Instantiate(Path.Combine("Prefabs", 
-                    transform.parent.gameObject.name), Vector3.zero, Quaternion.identity);
+                    "LactoBacteria"), Vector3.zero, Quaternion.identity);
                 newBacteria.transform.GetChild(0).GetComponent<Rigidbody2D>().AddForce(300 * Random.insideUnitCircle);
                 numBacteria++;
             }

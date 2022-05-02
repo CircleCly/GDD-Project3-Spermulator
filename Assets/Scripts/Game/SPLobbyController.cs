@@ -6,12 +6,8 @@ using Photon.Realtime;
 
 public class SPLobbyController : MonoBehaviourPunCallbacks
 {
-    public GameObject tutorialPopup;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject tutorialPopup;
 
     // Update is called once per frame
     void Update()
@@ -25,16 +21,24 @@ public class SPLobbyController : MonoBehaviourPunCallbacks
         int randomRoomNumber = Random.Range(0, 10000);
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 1 };
         PhotonNetwork.CreateRoom("Room " + randomRoomNumber, roomOps);
+        Debug.Log("Room created");
+        Debug.Log("Room joined");
+        tutorialPopup.SetActive(true);
     }
 
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        Debug.Log("Failed to create room!");
+    }
     public override void OnJoinedRoom()
     {
         Debug.Log("You are now in a room.");
-        tutorialPopup.SetActive(true);
+        
     }
     public override void OnDisconnected(DisconnectCause cause)
     {
         PhotonNetwork.OfflineMode = true;
+        CreateSingleplayerRoom();
     }
 
     public void EnableOfflineMode()
@@ -43,8 +47,10 @@ public class SPLobbyController : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.IsConnected)
         {
             PhotonNetwork.OfflineMode = true;
+            CreateSingleplayerRoom();
             return;
         }
+        Debug.Log("Trying to disconnect");
         PhotonNetwork.Disconnect();
     }
 
