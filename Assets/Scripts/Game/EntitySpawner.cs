@@ -13,13 +13,13 @@ public class EntitySpawner : MonoBehaviour
         if (PhotonNetwork.IsMasterClient)
         {
             Bacteria.numBacteria = entitySpawnData[0].initialCount;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < entitySpawnData.Length - 1; i++)
             {
                 RandomSpawnEntity(entitySpawnData[i]);
             }
             if (PhotonNetwork.OfflineMode)
             {
-                SpawnCompetitorSperm(entitySpawnData[2]);
+                SpawnCompetitorSperm(entitySpawnData[entitySpawnData.Length - 1]);
             }
         }
     }
@@ -50,7 +50,7 @@ public class EntitySpawner : MonoBehaviour
             GameObject competitor = PhotonNetwork.InstantiateRoomObject(Path.Combine("Prefabs", esd.entity.name), pos, transform.rotation);
             CompetitorSpermAI ai = competitor.GetComponent<CompetitorSpermAI>();
             ai.evasionImportance = Random.Range(0.4f, 0.7f);
-            ai.moveSpeed = Random.Range(2.2f, 3f);
+            ai.moveSpeed = Random.Range(2.7f, 3.4f);
             ai.rotationSpeed = Random.Range(15f, 20f);
             ai.firstWaypoint = GameObject.Find("WP0");
             Color c = Color.HSVToRGB(Random.Range(0f, 1f), 0.6f, 0.8f);

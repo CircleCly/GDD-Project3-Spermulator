@@ -71,7 +71,6 @@ public class CompetitorSpermAI: MonoBehaviour
 
     private void ProcessMovement()
     {
-        Debug.Log(_target.transform.position);
         Vector2 moveDir = (_target.transform.position - transform.position).normalized;
         float waypointAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
         Vector2 evadeDir = GetEvadeDirection();

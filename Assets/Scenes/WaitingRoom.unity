@@ -603,7 +603,7 @@ MonoBehaviour:
   nameDisplay: {fileID: 798494291}
   duplicateNameError: {fileID: 365014393}
   nameInput: {fileID: 974943445}
-  maxWaitTime: 10
+  maxWaitTime: 20
   maxFullGameWaitTime: 5
 --- !u!1 &798494289
 GameObject:

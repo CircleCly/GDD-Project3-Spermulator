@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
         {
             transform.Find("Camera").gameObject.SetActive(false);
             transform.Find("Canvas").gameObject.SetActive(false);
+        } else
+        {
+            StartCoroutine(DashCoroutine());
         }
 
         _nameTag.text = _pv.Owner.NickName;
@@ -130,6 +133,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Dash()
+    {
+        GetComponent<Rigidbody2D>().AddForce(1000 * transform.up);
+        _energyControl.ModifyEnergy(-90);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Boundary"))
@@ -140,6 +149,21 @@ public class PlayerController : MonoBehaviour
         } else if (collision.gameObject.CompareTag("Bottom"))
         {
             GameManager.Instance.AltEnding();
+        }
+    }
+
+    public IEnumerator DashCoroutine()
+    {
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                Dash();
+                yield return new WaitForSeconds(2.5f);
+            } else
+            {
+                yield return null;
+            }
         }
     }
 

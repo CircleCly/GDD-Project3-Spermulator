@@ -24,6 +24,8 @@ public class ImmuneCell : MonoBehaviour
 
     public float moveSpeed;
 
+    public float shootForce;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,10 +55,11 @@ public class ImmuneCell : MonoBehaviour
             {
                 Vector3 shootDir = (_detector.spermPosition - transform.position).normalized;
                 GameObject fl = PhotonNetwork.Instantiate(Path.Combine("Prefabs", _immuneFluid.name),
-                    transform.position + 2.2f * shootDir, transform.rotation);
-                fl.GetComponent<Rigidbody2D>().AddForce(800 * shootDir);
+                    transform.position + 2.0f * shootDir, transform.rotation);
+                fl.GetComponent<Rigidbody2D>().AddForce(shootForce * shootDir);
+                GameManager.Instance.masterPVs.Add(fl.GetPhotonView());
                 _shootAudio.Play();
-
+                
                 
             }
             yield return new WaitForSeconds(Random.Range(shootIntervalMin, shootIntervalMax));

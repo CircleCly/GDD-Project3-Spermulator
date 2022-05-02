@@ -1840,7 +1840,7 @@ GameObject:
   - component: {fileID: 959287339}
   - component: {fileID: 2570198187129294084}
   - component: {fileID: 9007578788770653168}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1931,7 +1931,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.1
+  m_LinearDrag: 3
   m_AngularDrag: 0.1
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1957,7 +1957,7 @@ MonoBehaviour:
   time: 0
   rb: {fileID: 3080876480001786432}
   _nameTag: {fileID: 6624524926807576272}
-  controlWithMouse: 0
+  controlWithMouse: 1
 --- !u!70 &3080876480001786439
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

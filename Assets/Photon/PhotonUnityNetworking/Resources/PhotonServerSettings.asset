@@ -45,6 +45,7 @@ MonoBehaviour:
   - RPC_LoseOthers
   - RPC_UpdateWinner
   - RPC_SendTarget
+  - RPC_SendColorAlpha
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

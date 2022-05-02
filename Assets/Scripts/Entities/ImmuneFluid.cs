@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using Photon.Pun;
 
 public class ImmuneFluid : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Basic area generated on contact")]
-    private GameObject _basicArea;
+    private GameObject fluidArea;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,7 +15,8 @@ public class ImmuneFluid : MonoBehaviour
             collision.gameObject.CompareTag("Boundary"))
         {
             Destroy(gameObject);
-            Instantiate(_basicArea, transform.position, transform.rotation);
+            GameObject go = PhotonNetwork.Instantiate(Path.Combine("Prefabs", fluidArea.name), transform.position, transform.rotation);
+            GameManager.Instance.masterPVs.Add(go.GetPhotonView());
         }
     }
     

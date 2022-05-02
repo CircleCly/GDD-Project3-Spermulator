@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (winnerPv.IsMine)
         {
+            winnerName = winnerPv.Owner.NickName;
             _pv.RPC("RPC_UpdateWinner", RpcTarget.AllBuffered, winnerPv.Owner.NickName);
         }
         PlayerPrefs.SetFloat("dist", ctrl.distTravelled);

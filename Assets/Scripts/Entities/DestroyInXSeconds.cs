@@ -35,10 +35,22 @@ public class DestroyInXSeconds : MonoBehaviour
             {
                 Color c = _renderer.color;
                 _renderer.color = new Color(c.r, c.g, c.b, (time - destroyTimer) / time);
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    _pv.RPC("RPC_SendColorAlpha", RpcTarget.AllBuffered, _renderer.color.a);
+                }
             }
             yield return null;
             destroyTimer += Time.deltaTime;
         }
         PhotonNetwork.Destroy(gameObject);
+    }
+
+    [PunRPC]
+    public void RPC_SendColorAlpha(float a)
+    {
+        Color newColor = _renderer.color;
+        newColor.a = a;
+        _renderer.color = newColor;
     }
 }
