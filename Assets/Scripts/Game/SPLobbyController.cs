@@ -23,7 +23,6 @@ public class SPLobbyController : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom("Room " + randomRoomNumber, roomOps);
         Debug.Log("Room created");
         Debug.Log("Room joined");
-        tutorialPopup.SetActive(true);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -33,7 +32,7 @@ public class SPLobbyController : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("You are now in a room.");
-        
+        tutorialPopup.SetActive(true);
     }
     public override void OnDisconnected(DisconnectCause cause)
     {

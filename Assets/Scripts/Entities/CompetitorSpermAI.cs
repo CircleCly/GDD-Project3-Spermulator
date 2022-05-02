@@ -61,7 +61,7 @@ public class CompetitorSpermAI: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_pv.Owner.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient)
         {
             ProcessMovement();
         }

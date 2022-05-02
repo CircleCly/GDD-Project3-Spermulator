@@ -57,7 +57,7 @@ public class Bacteria : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_pv.Owner.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient)
         {
             _rb.AddForce(_moveForce * Random.insideUnitCircle);
             _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, _maxSpeed);
@@ -73,31 +73,37 @@ public class Bacteria : MonoBehaviour
     {
         while (true)
         {
-            float proportion = (float) (_maxBacteriaCount - numBacteria) / _maxBacteriaCount;
-            float probSpawn = proportion * (1 - Mathf.Pow(0.5f, 1 / _initialReplicatePeriod));
-            bool spawnBacteria = Random.Range(0f, 1f) < probSpawn;
-            if (spawnBacteria)
+            if (PhotonNetwork.IsMasterClient)
             {
-                GameObject newBacteria = PhotonNetwork.Instantiate(Path.Combine("Prefabs", 
-                    "LactoBacteria"), Vector3.zero, Quaternion.identity);
-                newBacteria.transform.GetChild(0).GetComponent<Rigidbody2D>().AddForce(300 * Random.insideUnitCircle);
-                numBacteria++;
+                float proportion = (float)(_maxBacteriaCount - numBacteria) / _maxBacteriaCount;
+                float probSpawn = proportion * (1 - Mathf.Pow(0.5f, 1 / _initialReplicatePeriod));
+                bool spawnBacteria = Random.Range(0f, 1f) < probSpawn;
+                if (spawnBacteria)
+                {
+                    GameObject newBacteria = PhotonNetwork.Instantiate(Path.Combine("Prefabs",
+                        "LactoBacteria"), Vector3.zero, Quaternion.identity);
+                    newBacteria.transform.GetChild(0).GetComponent<Rigidbody2D>().AddForce(300 * Random.insideUnitCircle);
+                    numBacteria++;
+                }
+                yield return new WaitForSeconds(1);
             }
-            yield return new WaitForSeconds(1);
         }
         
     }
 
     IEnumerator DeathTimer()
     {
-        float timer = 0f;
-        while (timer < _lifeSpan)
+        if (PhotonNetwork.IsMasterClient)
         {
-            yield return null;
-            timer += Time.deltaTime;
+            float timer = 0f;
+            while (timer < _lifeSpan)
+            {
+                yield return null;
+                timer += Time.deltaTime;
+            }
+            numBacteria--;
+            PhotonNetwork.Destroy(transform.parent.gameObject);
         }
-        numBacteria--;
-        Destroy(transform.parent.gameObject);
     }
 
 }

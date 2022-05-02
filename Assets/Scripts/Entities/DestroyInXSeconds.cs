@@ -10,14 +10,20 @@ public class DestroyInXSeconds : MonoBehaviour
     public bool fade;
 
     private SpriteRenderer _renderer;
+
+    private PhotonView _pv;
     // Start is called before the first frame update
     void Start()
     {
+        _pv = GetComponent<PhotonView>();
         if (fade)
         {
             _renderer = gameObject.GetComponent<SpriteRenderer>();
         }
-        StartCoroutine(DestroyRoutine());
+        if (PhotonNetwork.IsMasterClient)
+        {
+            StartCoroutine(DestroyRoutine());
+        }
     }
 
     IEnumerator DestroyRoutine()

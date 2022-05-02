@@ -127,9 +127,9 @@ public class GameManager : MonoBehaviour
     public void QuitToTitle()
     {
         //clearEventSystem();
-        PhotonNetwork.LeaveRoom();
-        PhotonNetwork.Disconnect();
         PhotonNetwork.LoadLevel("StartMenu");
     }
+
+
 
 }
