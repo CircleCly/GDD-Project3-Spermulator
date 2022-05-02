@@ -18,7 +18,7 @@ public class QuitToTitleManager : MonoBehaviourPunCallbacks
         
     }
 
-    void Quit()
+    public void Quit()
     {
         if (!PhotonNetwork.OfflineMode)
         {

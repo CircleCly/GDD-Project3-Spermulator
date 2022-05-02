@@ -45,10 +45,13 @@ public class PHControl : MonoBehaviour
         
         if (_pH < minPH || _pH > maxPH)
         {
-            PhotonNetwork.Destroy(gameObject);
             if (gameObject.CompareTag("Player") && _pv.IsMine)
             {
+                PhotonNetwork.Destroy(gameObject);
                 GameManager.Instance.LoseGame();
+            } else
+            {
+                PhotonNetwork.Destroy(gameObject);
             }
         }
     }

@@ -27,10 +27,7 @@ public class ImmuneCell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            StartCoroutine(ShootCoroutine());
-        }
+        StartCoroutine(ShootCoroutine());
         _shootAudio = GetComponent<AudioSource>();
         _pv = GetComponent<PhotonView>();
     }

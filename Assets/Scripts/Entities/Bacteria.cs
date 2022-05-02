@@ -85,8 +85,8 @@ public class Bacteria : MonoBehaviour
                     newBacteria.transform.GetChild(0).GetComponent<Rigidbody2D>().AddForce(300 * Random.insideUnitCircle);
                     numBacteria++;
                 }
-                yield return new WaitForSeconds(1);
             }
+            yield return new WaitForSeconds(1);
         }
         
     }
