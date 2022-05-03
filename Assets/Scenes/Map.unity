@@ -214,8 +214,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14264779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.001, y: 113.0967, z: 0}
-  m_LocalScale: {x: 62.999924, y: 5.356665, z: 1}
+  m_LocalPosition: {x: 0.5159, y: 110.4286, z: 0}
+  m_LocalScale: {x: 49.900085, y: 7.783101, z: 1}
   m_Children: []
   m_Father: {fileID: 1962880619}
   m_RootOrder: 5
@@ -2250,8 +2250,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744401078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9409, y: 92.4111, z: 0}
-  m_LocalScale: {x: 38.835377, y: 47.334984, z: 1}
+  m_LocalPosition: {x: 0.6435, y: 82.3796, z: 0}
+  m_LocalScale: {x: 39.429558, y: 22.515776, z: 1}
   m_Children: []
   m_Father: {fileID: 1962880619}
   m_RootOrder: 3
@@ -6360,7 +6360,7 @@ MonoBehaviour:
   - entityName: Mucus Cell
     spawnArea: {fileID: 14264781}
     entity: {fileID: 5370958384096026571, guid: 6c0c9dd789523674fad9bdbef98785e5, type: 3}
-    initialCount: 5
+    initialCount: 3
   - entityName: Competitor Sperm
     spawnArea: {fileID: 1172966609}
     entity: {fileID: 4770773797664679665, guid: 004015793a64161479f124acfa07ed3b, type: 3}

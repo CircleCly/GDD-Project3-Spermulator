@@ -23,11 +23,11 @@ public class Mucus : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _as.Play();
-            collision.gameObject.GetComponent<PlayerController>().moveSpeed *= 0.25f;
+            collision.gameObject.GetComponent<PlayerController>().moveSpeed = 1.25f;
         }
         else if (collision.gameObject.CompareTag("Competitor"))
         {
-            collision.gameObject.GetComponent<CompetitorSpermAI>().moveSpeed *= 0.25f;
+            collision.gameObject.GetComponent<CompetitorSpermAI>().moveSpeed = 1.25f;
         }
     }
 
@@ -36,11 +36,11 @@ public class Mucus : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _as.Play();
-            collision.gameObject.GetComponent<PlayerController>().moveSpeed *= 4f;
+            collision.gameObject.GetComponent<PlayerController>().moveSpeed = 5f;
         }
         else if (collision.gameObject.CompareTag("Competitor"))
         {
-            collision.gameObject.GetComponent<CompetitorSpermAI>().moveSpeed *= 4f;
+            collision.gameObject.GetComponent<CompetitorSpermAI>().moveSpeed = 5f;
         }
     }
 }

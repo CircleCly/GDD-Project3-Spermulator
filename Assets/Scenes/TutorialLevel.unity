@@ -906,7 +906,7 @@ Transform:
   m_LocalScale: {x: 21.426994, y: 16.449118, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &566911987
 GameObject:
@@ -2143,6 +2143,10 @@ PrefabInstance:
     - target: {fileID: 6512287578246426487, guid: dc620aba1b031574883970b23c04de18, type: 3}
       propertyPath: m_Name
       value: Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640925935626567034, guid: dc620aba1b031574883970b23c04de18, type: 3}
+      propertyPath: sceneViewId
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5782317451778874105, guid: dc620aba1b031574883970b23c04de18, type: 3}
