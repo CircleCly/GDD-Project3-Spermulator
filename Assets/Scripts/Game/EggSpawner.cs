@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using System.IO;
 
 public class EggSpawner : MonoBehaviour
 {
@@ -13,12 +15,12 @@ public class EggSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Random.Range(0f, 1f) < 0.5f)
+        if (PhotonNetwork.IsMasterClient && Random.Range(0f, 1f) < 0.5f)
         {
-            Instantiate(egg, left.position, left.rotation);
+            PhotonNetwork.Instantiate(Path.Combine("Prefabs", egg.name), left.position, left.rotation);
         } else
         {
-            Instantiate(egg, right.position, left.rotation);
+            PhotonNetwork.Instantiate(Path.Combine("Prefabs", egg.name), right.position, right.rotation);
         }
         
     }
