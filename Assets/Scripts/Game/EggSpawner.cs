@@ -15,13 +15,18 @@ public class EggSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PhotonNetwork.IsMasterClient && Random.Range(0f, 1f) < 0.5f)
+        if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.Instantiate(Path.Combine("Prefabs", egg.name), left.position, left.rotation);
-        } else
-        {
-            PhotonNetwork.Instantiate(Path.Combine("Prefabs", egg.name), right.position, right.rotation);
+            if (Random.Range(0f, 1f) < 0.5f)
+            {
+                PhotonNetwork.Instantiate(Path.Combine("Prefabs", egg.name), left.position, left.rotation);
+            }
+            else
+            {
+                PhotonNetwork.Instantiate(Path.Combine("Prefabs", egg.name), right.position, right.rotation);
+            }
         }
+            
         
     }
 
