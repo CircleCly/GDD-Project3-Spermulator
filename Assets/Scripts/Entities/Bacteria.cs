@@ -60,7 +60,7 @@ public class Bacteria : MonoBehaviour
         if (PhotonNetwork.IsMasterClient)
         {
             _rb.AddForce(_moveForce * Random.insideUnitCircle);
-            _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, _maxSpeed);
+            _rb.linearVelocity = Vector2.ClampMagnitude(_rb.linearVelocity, _maxSpeed);
         }
     }
 

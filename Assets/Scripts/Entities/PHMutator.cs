@@ -34,7 +34,7 @@ public class PHMutator : MonoBehaviour
             Rigidbody2D _playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             EnergyControl _playerEnergy = collision.gameObject.GetComponent<EnergyControl>();
             _playerPHCtrl.PH -= pHAcidDecline * Time.deltaTime;
-            _playerRb.AddForce(-stickyness * _playerRb.velocity);
+            _playerRb.AddForce(-stickyness * _playerRb.linearVelocity);
             _playerEnergy.ModifyEnergy(-energyDrain * Time.deltaTime);
             
         } else if (collision.gameObject.CompareTag("Competitor")) {
